@@ -17,6 +17,7 @@ function myFunction(element) {
     const text = element.value;
     if (text == 'mdp') {
         alert('mot de passe trouvé');
+        window.location.href = 'desktop.php';
     } else {
         alert('mot de passe incorrect');
     }

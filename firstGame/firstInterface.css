@@ -1,3 +1,10 @@
+body {
+    background-image: url('img/firstBackground.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 #laptopButton {
     position: absolute;
     bottom: 0;
