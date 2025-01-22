@@ -11,17 +11,35 @@ function changeScene(sceneId) {
     changeBackground(sceneId);
 }
 
+function manageBackButton(display, functionToCall) {
+    var backButton = document.getElementById('backButton');
+    backButton.style.display = display;
+    backButton.onclick = functionToCall;
+    addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            functionToCall();
+        }
+    });
+}
+
 function changeBackground(sceneId) {
     const body = document.body;
     if (sceneId === 'desktop') {
         body.style.backgroundImage = "url('img/desktop.jpeg')";
         currentScene = 'desktop';
+        manageBackButton('none', null);
     } else if (sceneId === 'laptop') {
         body.style.backgroundImage = "none";
         currentScene = 'laptop';
+        manageBackButton('block', function() {
+            changeScene('desktop');
+        });
     } else if (sceneId === 'computer') {
         body.style.backgroundImage = "url('img/computer.png')";
         currentScene = 'computer';
+        manageBackButton('block', function() {
+            changeScene('desktop');
+        });
     }
 }
 
@@ -35,11 +53,9 @@ function zoomOnObject(object) {
     object.style.left = '25%';
     object.style.width = "50%";
     object.style.height = "50%";
-    var backButton = document.getElementById('backButton');
-    backButton.style.display = 'block';
-    backButton.onclick = function() {
+    manageBackButton('block', function() {
         zoomOutObject(object);
-    };
+    });
 }
 
 function zoomOutObject(object) {
@@ -65,7 +81,7 @@ function handleEnterKey(event, element) {
 }
 
 function myFunction(element) {
-    const text = element.value;
+    var text = element.value;
     if (text == password) {
         changeScene('computer');
     } else {
