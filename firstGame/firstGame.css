@@ -36,3 +36,12 @@ textarea {
     bottom: 0;
     right: 0;
 }
+
+#hiddenQRCode {
+    position: absolute;
+    border: 1px solid brown;
+    top: 25%;
+    left: 5%;
+    width: 16%;
+    height: 10%;
+}
