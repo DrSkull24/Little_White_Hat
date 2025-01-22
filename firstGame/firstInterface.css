@@ -1,0 +1,18 @@
+#laptopButton {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+#screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+textarea {
+    resize: none;
+}

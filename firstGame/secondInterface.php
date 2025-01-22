@@ -2,12 +2,12 @@
 <html lang="fr">
     <head>
         <title>Second interface</title>
-        <link rel="stylesheet" href="firstInterface.css">
+        <link rel="stylesheet" href="secondInterface.css">
         <script src="firstGame.js"></script>
     </head>
     <body>
         <a href="firstInterface.php">
-            <img src="img/retour.jpeg">
+            <img id="backButton" src="img/retour.jpeg">
         </a>
     </body>
 </html>
