@@ -1,4 +1,5 @@
 let isCleared = false;
+let password = 'mdp'
 function clearText(element) {
     if (!isCleared) {
         element.value = '';
@@ -15,8 +16,7 @@ function handleEnterKey(event, element) {
 
 function myFunction(element) {
     const text = element.value;
-    if (text == 'mdp') {
-        alert('mot de passe trouvé');
+    if (text == password) {
         window.location.href = 'desktop.php';
     } else {
         alert('mot de passe incorrect');

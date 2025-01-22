@@ -9,9 +9,10 @@
         <div id="screen">
             <p>oui</p>
             <textarea onclick="clearText(this)" onkeydown="handleEnterKey(event, this)">mot de passe</textarea>
-            <a href="secondInterface.php">
-                <img id="laptopButton" src="img/ordinateur.png">
-            </a>
         </div>
+        <a href="secondInterface.php">
+            <img id="laptopButton" src="img/ordinateur.png">
+        </a>
+        <img src="img/hiddenQRCode.png" width="16%" height="10%">
     </body>
 </html>

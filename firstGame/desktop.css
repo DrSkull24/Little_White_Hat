@@ -3,3 +3,9 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+#laptopButton {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}

@@ -13,5 +13,8 @@
                 <img id="laptopButton" src="img/ordinateur.png">
             </a>
         </div> -->
+        <a href="secondInterface.php">
+            <img id="laptopButton" src="img/ordinateur.png">
+        </a>
     </body>
 </html>
