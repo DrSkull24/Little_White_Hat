@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>First chapter</title>
+        <link rel="stylesheet" href="firstGame.css">
+        <script src="firstGame.js"></script>
+    </head>
+    <body>
+        <div id="desktop" class="scene">
+            <div id="screen">
+                <p>oui</p>
+                <textarea onclick="clearText(this)" onkeydown="handleEnterKey(event, this)">mot de passe</textarea>
+            </div>
+            <img onclick="changeScene('laptop')" id="laptopButton" src="img/ordinateur.png">
+            <img src="img/hiddenQRCode.png" width="16%" height="10%">
+        </div>
+        <div id="laptop" class="scene" style="display: none;">
+            <img onclick="changeScene('desktop')" id="backButton" src="img/retour.jpeg">
+        </div>
+        <div id="computer" class="scene" style="display: none;">
+            <img onclick="changeScene('desktop')" id="backButton" src="img/retour.jpeg">
+        </div>
+    </body>
+</html>
