@@ -1,6 +1,6 @@
 body {
-    background-image: url('img/firstBackground.jpeg');
-    background-size: contain;
+    background-image: url('img/desktop.jpeg');
+    background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
     min-height: 100vh;
@@ -29,4 +29,10 @@ body {
 
 textarea {
     resize: none;
+}
+
+#backButton {
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
