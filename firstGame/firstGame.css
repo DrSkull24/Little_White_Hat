@@ -55,6 +55,12 @@ textarea {
     height: 10%;
 }
 
+#folderName {
+    color: white;
+    position: relative;
+    left: 5%;
+}
+
 #openFolder {
     display: none;
 }

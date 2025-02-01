@@ -8,7 +8,6 @@ function changeScene(sceneId) {
         scene.style.display = 'none';
     });
     document.getElementById(sceneId).style.display = 'block';
-    changeBackground(sceneId);
 }
 
 function manageBackButton(display, functionToCall) {
@@ -22,26 +21,36 @@ function manageBackButton(display, functionToCall) {
     });
 }
 
-function changeBackground(sceneId) {
-    const body = document.body;
-    if (sceneId === 'desktop') {
-        body.style.backgroundImage = "url('img/desktop.jpeg')";
-        currentScene = 'desktop';
-        manageBackButton('none', null);
-    } else if (sceneId === 'laptop') {
-        body.style.backgroundImage = "url('img/laptopBackground.jpeg')";
-        currentScene = 'laptop';
-        manageBackButton('block', function() {
-            changeScene('desktop');
-        });
-    } else if (sceneId === 'computer') {
-        body.style.backgroundImage = "url('img/computer.png')";
-        currentScene = 'computer';
-        manageBackButton('block', function() {
-            changeScene('desktop');
-        });
-    }
+function goToComputer() {
+    changeScene('computer');
+    document.body.style.backgroundImage = "url('img/computer.png')";
+    currentScene = 'computer';
+    manageBackButton('block', function () {
+        goToDesktop();
+    });
 }
+
+function goToLaptop() {
+    changeScene('laptop');
+    document.body.style.backgroundImage = "url('img/laptopBackground.jpeg')";
+    currentScene = 'laptop';
+    let laptop = document.getElementById('laptop');
+    laptop.querySelectorAll('.folder').forEach(object => {
+        initClosedFolderDisplay(object);
+    });
+    manageBackButton('block', function () {
+        goToDesktop();
+    });
+}
+
+
+function goToDesktop() {
+    changeScene('desktop');
+    document.body.style.backgroundImage = "url('img/desktop.jpeg')";
+    currentScene = 'desktop';
+    manageBackButton('none', null);
+}
+
 
 function zoomOnObject(object) {
     document.getElementById(currentScene).querySelectorAll('.object').forEach(otherObject => {
@@ -116,24 +125,34 @@ function clearText(element) {
 function handleEnterKey(event, element) {
     if (event.key === 'Enter') {
         event.preventDefault();
-        myFunction(element);
+        tryPassword(element);
     }
 }
 
-function myFunction(element) {
+function tryPassword(element) {
     var text = element.value;
     if (text == password) {
-        changeScene('computer');
+        goToComputer();
     } else {
         alert('mot de passe incorrect');
     }
 }
 
+function initClosedFolderDisplay(object) {
+    let closedFolder = object.children[0];
+    let name = object.children[1];
+    let bounding = closedFolder.getBoundingClientRect();
+    name.style.position = 'absolute';
+    name.style.left = bounding.left + bounding.width / 2 - name.width / 2 + 'px';
+    name.style.top = bounding.top + bounding.height - 50 + 'px';
+}
+
 function openFolder(element) {
     element.children[0].style.display = 'none';
-    element.children[1].style.display = 'block';
-    var folderBackground = element.children[1].children[0];
-    var quitFolder = element.children[1].children[1];
+    element.children[1].style.display = 'none';
+    element.children[2].style.display = 'block';
+    var folderBackground = element.children[2].children[0];
+    var quitFolder = element.children[2].children[1];
     quitFolder.style.left = folderBackground.style.left + folderBackground.width - 30 + 'px';
     quitFolder.style.top = folderBackground.style.top + 10 + "px";
     quitFolder.onclick = function() {
@@ -143,5 +162,6 @@ function openFolder(element) {
 
 function closeFolder(element) {
     element.children[0].style.display = 'block';
-    element.children[1].style.display = 'none';
+    element.children[1].style.display = 'block';
+    element.children[2].style.display = 'none';
 }
