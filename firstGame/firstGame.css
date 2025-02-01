@@ -8,6 +8,14 @@ body {
     margin: 0;
 }
 
+#laptop {
+    display: none;
+}
+
+#computer {
+    display: none;
+}
+
 #laptopButton {
     position: absolute;
     bottom: 0;
@@ -32,6 +40,7 @@ textarea {
 }
 
 #backButton {
+    display: none;
     position: absolute;
     bottom: 0;
     right: 0;
@@ -44,4 +53,15 @@ textarea {
     left: 5%;
     width: 16%;
     height: 10%;
+}
+
+#openFolder {
+    display: none;
+}
+
+#quitFolder {
+    background-color: red;
+    position: absolute;
+    width: 25px;
+    height: 25px;
 }

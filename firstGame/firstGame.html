@@ -6,20 +6,27 @@
         <script src="firstGame.js"></script>
     </head>
     <body>
-        <img id="backButton" src="img/retour.jpeg" style="display: none;">
+        <img id="backButton" src="img/retour.jpeg">
         <div id="desktop" class="scene">
             <div id="screen">
                 <p>oui</p>
                 <textarea onclick="clearText(this)" onkeydown="handleEnterKey(event, this)">mot de passe</textarea>
             </div>
-            <img class="object" onclick="changeScene('laptop')" id="laptopButton" src="img/ordinateur.png">
+            <img class="object" onclick="changeScene('laptop')" id="laptopButton" src="img/laptop.png">
             <img id="hiddenQRCode" class="object" onclick="zoomOnObject(this)" src="img/hiddenQRCode.png">
         </div>
 
-        <div id="laptop" class="scene" style="display: none;">
+        <div id="laptop" class="scene">
+            <div class="folder">
+                <img id="closedFolder" onclick="openFolder(parentElement)" class="object" src="img/folder.png">   
+                <div id="openFolder">
+                    <img id="folderBackground" src="img/openFolder.webp">
+                    <div id="quitFolder"></div>
+                </div>
+            </div>
         </div>
 
-        <div id="computer" class="scene" style="display: none;">
+        <div id="computer" class="scene">
         </div>
     </body>
 </html>

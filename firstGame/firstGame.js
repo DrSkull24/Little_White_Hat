@@ -29,7 +29,7 @@ function changeBackground(sceneId) {
         currentScene = 'desktop';
         manageBackButton('none', null);
     } else if (sceneId === 'laptop') {
-        body.style.backgroundImage = "none";
+        body.style.backgroundImage = "url('img/laptopBackground.jpeg')";
         currentScene = 'laptop';
         manageBackButton('block', function() {
             changeScene('desktop');
@@ -87,4 +87,21 @@ function myFunction(element) {
     } else {
         alert('mot de passe incorrect');
     }
+}
+
+function openFolder(element) {
+    element.children[0].style.display = 'none';
+    element.children[1].style.display = 'block';
+    var folderBackground = element.children[1].children[0];
+    var quitFolder = element.children[1].children[1];
+    quitFolder.style.left = folderBackground.style.left + folderBackground.width - 30 + 'px';
+    quitFolder.style.top = folderBackground.style.top + 10 + "px";
+    quitFolder.onclick = function() {
+        closeFolder(element);
+    }
+}
+
+function closeFolder(element) {
+    element.children[0].style.display = 'block';
+    element.children[1].style.display = 'none';
 }
