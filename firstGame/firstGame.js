@@ -53,9 +53,26 @@ function zoomOnObject(object) {
     object.style.left = '25%';
     object.style.width = "50%";
     object.style.height = "50%";
+    object.onclick = "null";
     manageBackButton('block', function() {
         zoomOutObject(object);
     });
+
+    if (object.id === 'hiddenQRCode') {
+        btn = document.createElement('button');
+        btn.onclick = function() {
+            downloadFile(object.src);
+        };
+        btn.innerHTML = "Télécharger l'image";
+        btn.style.fontSize = "15px";
+        btn.style.position = 'absolute';
+        btn.style.width = '10%';
+        btn.style.height = '5%';
+        var bounding = object.getBoundingClientRect();
+        btn.style.top = bounding.top + bounding.height + 15 + 'px';
+        btn.style.left = "45%";
+        object.parentElement.appendChild(btn);
+    }
 }
 
 function zoomOutObject(object) {
@@ -64,6 +81,29 @@ function zoomOutObject(object) {
         otherObject.style.display = 'block';
     });
     document.getElementById('backButton').style.display = 'none';
+    if (object.id === 'hiddenQRCode') {
+        object.parentElement.removeChild(object.parentElement.lastChild);
+    }
+    object.onclick = function() {
+        zoomOnObject(object);
+    };
+}
+
+function downloadFile(fileUrl) {
+    if (confirm("vous allez télécharger le fichier")){
+
+        fetch(fileUrl)
+            .then(response => response.blob()) // Convertir en blob
+            .then(blob => {
+                let link = document.createElement("a");
+                link.href = URL.createObjectURL(blob);
+                link.download = fileUrl; // Nom du fichier téléchargé
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            })
+            .catch(error => console.error("Erreur de téléchargement :", error));
+    }
 }
 
 function clearText(element) {
