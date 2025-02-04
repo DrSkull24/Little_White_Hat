@@ -1,7 +1,8 @@
 let isCleared = false;
-let password = 'mdp';
+let password = 'Lecodeestbienvenulittlewhitehat';
 let styleBeforeZoom;
 let currentScene = 'desktop';
+let laptopVisited = false;
 
 function changeScene(sceneId) {
     document.querySelectorAll('.scene').forEach(scene => {
@@ -25,12 +26,19 @@ function goToComputer() {
     changeScene('computer');
     document.body.style.backgroundImage = "url('img/computer.png')";
     currentScene = 'computer';
-    manageBackButton('block', function () {
-        goToDesktop();
-    });
+    manageBackButton('block', goToDesktop);
+    setTimeout(() => {
+        alert("Bravo ! Vous avez trouvé le mot de passe et fini le prologue.");
+    }, 50);
 }
 
 function goToLaptop() {
+    if (!laptopVisited) {
+        laptopVisited = true;
+        requestAnimationFrame(() => {
+            alert("Vous allez arriver sur votre ordinateur personnel. Il vous servira pour la plupart des énigmes.");
+        });
+    }
     changeScene('laptop');
     document.body.style.backgroundImage = "url('img/laptopBackground.jpeg')";
     currentScene = 'laptop';
@@ -38,9 +46,7 @@ function goToLaptop() {
     laptop.querySelectorAll('.folder').forEach(object => {
         initClosedFolderDisplay(object);
     });
-    manageBackButton('block', function () {
-        goToDesktop();
-    });
+    manageBackButton('block', goToDesktop);
 }
 
 
@@ -164,4 +170,31 @@ function closeFolder(element) {
     element.children[0].style.display = 'block';
     element.children[1].style.display = 'block';
     element.children[2].style.display = 'none';
+}
+
+function openAperiSolve() {
+    let aperiSolve = document.getElementById("aperiSolve");
+    if (aperiSolve) {
+        aperiSolve.style.display = 'block';
+    } else {
+        aperiSolve = document.createElement("iframe");
+        aperiSolve.src = "https://www.aperisolve.com";
+        aperiSolve.style.position = "absolute";
+        aperiSolve.style.width = "100%";
+        aperiSolve.style.height = "100%";
+        aperiSolve.style.top = "0";
+        aperiSolve.style.left = "0";
+        aperiSolve.style.zIndex = "10";
+        aperiSolve.id = "aperiSolve";
+        document.body.appendChild(aperiSolve);
+    }
+    manageBackButton('block', closeAperiSolve);
+}
+
+function closeAperiSolve() {
+    const aperiSolve = document.getElementById("aperiSolve"); 
+    if (aperiSolve) {
+        aperiSolve.style.display = 'none'; 
+    }
+    manageBackButton('block', goToDesktop);
 }
