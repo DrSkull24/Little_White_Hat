@@ -47,6 +47,10 @@ textarea {
     z-index: 999;
 }
 
+.object {
+    cursor: pointer;
+}
+
 #hiddenQRCode {
     position: absolute;
     border: 1px solid brown;
