@@ -1,17 +1,46 @@
+body {
+    background-image: url('img/startBackground.webp');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    min-width: 100vw;
+    margin: 0;
+}
+
 #startButton {
     position: absolute;
     background-color: #4CAF50;
     color: white;
-    font-size: 16px;
-    padding: 16px 40px;
+    font-size: 20px;
+    padding: 20px 50px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
-    text-decoration: none;
     display: inline-block;
+    width: auto;
+    height: auto;
     margin: 4px 2px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 0 16px 8px rgba(0,0,0,0.2);
+}
+
+.container {
+    text-align: center;
+}
+
+#intro-text {
+    color:gold;
+    font-size: large;
+}
+
+#title {
+    color: crimson;
+    position: absolute;
+    top: 35%;
+    left: 60%;
+    font-size: 3vw;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #00f, 0 0 40px #00f;
 }
 
 h1 {
