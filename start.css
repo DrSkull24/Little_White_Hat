@@ -22,6 +22,7 @@ body {
     width: auto;
     height: auto;
     margin: 4px 2px;
+    text-decoration: none;
     box-shadow: 0 0 16px 8px rgba(0,0,0,0.5);
 }
 
@@ -84,7 +85,7 @@ body {
 }
 
 #intro-text {
-    color:gold;
+    color:white;
     font-size: large;
     text-shadow: 0 0 5px rgb(0, 0, 0), 0 0 10px rgb(0, 0, 0), 0 0 20px rgb(0, 0, 0), 0 0 40px rgb(0, 0, 0);
 }
