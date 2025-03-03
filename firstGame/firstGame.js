@@ -242,6 +242,20 @@ function nextDialogue() {
 
 document.getElementById("next-dialogue").addEventListener("click", nextDialogue);
 
+function showHints() {
+    hintButton.style.display = 'none';
+    hintBox.style.display = 'block';
+}
+
+function hideHints() {
+    hintButton.style.display = 'block';
+    hintBox.style.display = 'none';
+}
+
+const hintBox = document.getElementById("hint-box");
+const hintButton = document.getElementById("hint-button");
+hintButton.addEventListener("click", showHints);
+document.getElementById("close-hint").addEventListener("click", hideHints);
 
 let passwordTextArea = document.getElementById("passwordTextArea");
 passwordTextArea.addEventListener("click", () => clearText(passwordTextArea));
