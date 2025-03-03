@@ -1,3 +1,5 @@
+import { getCookie, setCookie } from "../cookies.js";
+
 let isCleared = false;
 let password = 'Lecodeestbienvenulittlewhitehat';
 let styleBeforeZoom;
@@ -27,9 +29,6 @@ function goToComputer() {
     document.body.style.backgroundImage = "url('img/computer.png')";
     currentScene = 'computer';
     manageBackButton('block', goToDesktop);
-    setTimeout(() => {
-        alert("Bravo ! Vous avez trouvé le mot de passe et fini le prologue.");
-    }, 50);
 }
 
 function goToLaptop() {
@@ -139,6 +138,12 @@ function tryPassword(element) {
     var text = element.value;
     if (text == password) {
         goToComputer();
+        if (getCookie("prologue_finished") === null) {
+            setCookie("prologue_finished", "true", 365);
+            setTimeout(() => {
+                alert("Bravo ! Vous avez trouvé le mot de passe et fini le prologue.");
+            }, 50);
+        }
     } else {
         alert('mot de passe incorrect');
     }
@@ -198,3 +203,17 @@ function closeAperiSolve() {
     }
     manageBackButton('block', goToDesktop);
 }
+
+let passwordTextArea = document.getElementById("passwordTextArea");
+passwordTextArea.addEventListener("click", () => clearText(passwordTextArea));
+passwordTextArea.addEventListener("keydown", (event) => handleEnterKey(event, passwordTextArea));
+
+document.getElementById("laptopIcon").addEventListener("click", goToLaptop);
+
+let closedFolder = document.getElementById("closedFolder");
+closedFolder.addEventListener("click", () => openFolder(closedFolder.parentElement));
+
+let hiddenQRCode = document.getElementById("hiddenQRCode");
+hiddenQRCode.addEventListener("click", () => zoomOnObject(hiddenQRCode));
+
+document.getElementById("aperisolveImg").addEventListener("click", openAperiSolve);
