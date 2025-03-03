@@ -40,7 +40,7 @@ function goToLaptop() {
         });
     }
     changeScene('laptop');
-    document.body.style.backgroundImage = "url('img/laptopBackground.jpeg')";
+    document.body.style.backgroundImage = "url('img/laptopBackground.jpg')";
     currentScene = 'laptop';
     let laptop = document.getElementById('laptop');
     laptop.querySelectorAll('.folder').forEach(object => {
@@ -52,7 +52,7 @@ function goToLaptop() {
 
 function goToDesktop() {
     changeScene('desktop');
-    document.body.style.backgroundImage = "url('img/desktop.jpeg')";
+    document.body.style.backgroundImage = "url('img/desktop.png')";
     currentScene = 'desktop';
     manageBackButton('none', null);
 }

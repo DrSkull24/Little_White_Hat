@@ -1,5 +1,5 @@
 body {
-    background-image: url('img/desktop.jpeg');
+    background-image: url('img/desktop.png');
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -24,8 +24,8 @@ body {
 
 #screen {
     position: absolute;
-    top: 25%;
-    left: 25%;
+    top: 10%;
+    left: 18%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -33,6 +33,7 @@ body {
     height: 50vh;
     width: 50vw;
     text-align: center;
+    font-size: 25px;
 }
 
 textarea {
@@ -54,10 +55,10 @@ textarea {
 #hiddenQRCode {
     position: absolute;
     border: 1px solid brown;
-    top: 25%;
-    left: 5%;
-    width: 16%;
-    height: 10%;
+    top: 0.5%;
+    left: 1.5%;
+    width: 17%;
+    height: 15%;
 }
 
 #folderName {
