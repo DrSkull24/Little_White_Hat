@@ -93,3 +93,36 @@ textarea {
     position: relative;
     left: 5%;
 }
+#dialogue-container {
+    display: none;
+    position: fixed;
+    bottom: 2%;
+    left: 2%;
+    width: 80%;
+    padding: 2%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+  }
+  
+  #dialogue-box {
+    font-size: 18px;
+  }
+  
+  #next-dialogue {
+    position: relative;
+    background-color: rgba(0, 183, 255, 0.6);
+    color: white;
+    border: none;
+    left: 90%;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: large;
+  }
+  
+  #next-dialogue:hover {
+    background-color: #45a049;
+  }
+  

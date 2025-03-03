@@ -5,6 +5,8 @@ let password = 'Lecodeestbienvenulittlewhitehat';
 let styleBeforeZoom;
 let currentScene = 'desktop';
 let laptopVisited = false;
+let currentDialogueIndex = 0;
+let dialogues;
 
 function changeScene(sceneId) {
     document.querySelectorAll('.scene').forEach(scene => {
@@ -140,10 +142,8 @@ function tryPassword(element) {
         goToComputer();
         if (getCookie("prologue_finished") === null) {
             setCookie("prologue_finished", "true", 365);
-            setTimeout(() => {
-                alert("Bravo ! Vous avez trouvé le mot de passe et fini le prologue.");
-            }, 50);
         }
+        showDialogue();
     } else {
         alert('mot de passe incorrect');
     }
@@ -203,6 +203,45 @@ function closeAperiSolve() {
     }
     manageBackButton('block', goToDesktop);
 }
+
+fetch('dialogues.json')
+  .then(response => response.json())
+  .then(dialoguesJSON => {
+    const username = getCookie('username');  
+
+    dialoguesJSON.forEach(dialogue => {
+      if (dialogue.name.includes("{{username}}")) {
+        dialogue.name = dialogue.name.replace("{{username}}", username);
+      }
+    });
+    
+    dialogues = dialoguesJSON;
+    showDialogue();
+  })
+  .catch(error => console.error('Erreur lors du chargement des dialogues:', error));
+
+const dialogueContainer = document.getElementById("dialogue-container");
+const dialogueText = document.getElementById("dialogue-text");
+const speakerName = document.getElementById("speaker-name");
+
+function showDialogue() {
+    const currentDialogue = dialogues[currentDialogueIndex];
+    speakerName.textContent = currentDialogue.name + " :";
+    dialogueText.textContent = currentDialogue.text;
+    dialogueContainer.style.display = "block";
+  }
+  
+function nextDialogue() {
+    currentDialogueIndex++;
+    if (currentDialogueIndex < dialogues.length && currentDialogueIndex !== 5) {
+        showDialogue();
+    } else {
+        dialogueContainer.style.display = "none";
+    }
+}
+
+document.getElementById("next-dialogue").addEventListener("click", nextDialogue);
+
 
 let passwordTextArea = document.getElementById("passwordTextArea");
 passwordTextArea.addEventListener("click", () => clearText(passwordTextArea));
