@@ -54,7 +54,7 @@ function goToLaptop() {
 
 function goToDesktop() {
     changeScene('desktop');
-    document.body.style.backgroundImage = "url('img/desktop.png')";
+    document.body.style.backgroundImage = "url('img/desktop.jpg')";
     currentScene = 'desktop';
     manageBackButton('none', null);
 }
