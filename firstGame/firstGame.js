@@ -7,6 +7,7 @@ let currentScene = 'desktop';
 let laptopVisited = false;
 let currentDialogueIndex = 0;
 let dialogues;
+let stopDialogues = [5, 8];
 
 function changeScene(sceneId) {
     document.querySelectorAll('.scene').forEach(scene => {
@@ -75,7 +76,7 @@ function zoomOnObject(object) {
     });
 
     if (object.id === 'hiddenQRCode') {
-        btn = document.createElement('button');
+        var btn = document.createElement('button');
         btn.onclick = function() {
             downloadFile(object.src);
         };
@@ -109,11 +110,11 @@ function downloadFile(fileUrl) {
     if (confirm("vous allez télécharger le fichier")){
 
         fetch(fileUrl)
-            .then(response => response.blob()) // Convertir en blob
+            .then(response => response.blob())
             .then(blob => {
                 let link = document.createElement("a");
                 link.href = URL.createObjectURL(blob);
-                link.download = fileUrl; // Nom du fichier téléchargé
+                link.download = fileUrl;
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
@@ -178,7 +179,7 @@ function closeFolder(element) {
 }
 
 function openAperiSolve() {
-    let aperiSolve = document.getElementById("aperiSolve");
+    let aperiSolve = document.getElementById("aperisolveWeb");
     if (aperiSolve) {
         aperiSolve.style.display = 'block';
     } else {
@@ -190,16 +191,43 @@ function openAperiSolve() {
         aperiSolve.style.top = "0";
         aperiSolve.style.left = "0";
         aperiSolve.style.zIndex = "10";
-        aperiSolve.id = "aperiSolve";
+        aperiSolve.id = "aperisolveWeb";
         document.body.appendChild(aperiSolve);
     }
     manageBackButton('block', closeAperiSolve);
 }
 
 function closeAperiSolve() {
-    const aperiSolve = document.getElementById("aperiSolve"); 
+    const aperiSolve = document.getElementById("aperisolveWeb"); 
     if (aperiSolve) {
         aperiSolve.style.display = 'none'; 
+    }
+    manageBackButton('block', goToDesktop);
+}
+
+function openForensically() {
+    let forensically = document.getElementById("forensicallyWeb");
+    if (forensically) {
+        forensically.style.display = 'block';
+    } else {
+        forensically = document.createElement("iframe");
+        forensically.src = "https://29a.ch/photo-forensics/#pca";
+        forensically.style.position = "absolute";
+        forensically.style.width = "100%";
+        forensically.style.height = "100%";
+        forensically.style.top = "0";
+        forensically.style.left = "0";
+        forensically.style.zIndex = "10";
+        forensically.id = "forensicallyWeb";
+        document.body.appendChild(forensically);
+    }
+    manageBackButton('block', closeForensically);
+}
+
+function closeForensically() {
+    const forensically = document.getElementById("forensicallyWeb"); 
+    if (forensically) {
+        forensically.style.display = 'none'; 
     }
     manageBackButton('block', goToDesktop);
 }
@@ -240,7 +268,15 @@ function nextDialogue() {
     }
 }
 
+function skipDialogues() {
+    while (!stopDialogues.includes(currentDialogueIndex)) {
+        currentDialogueIndex++;
+    }
+    dialogueContainer.style.display = "none";
+}
+
 document.getElementById("next-dialogue").addEventListener("click", nextDialogue);
+document.getElementById("skip-dialogues").addEventListener("click", skipDialogues);
 
 function showHints() {
     hintButton.style.display = 'none';
@@ -269,4 +305,6 @@ closedFolder.addEventListener("click", () => openFolder(closedFolder.parentEleme
 let hiddenQRCode = document.getElementById("hiddenQRCode");
 hiddenQRCode.addEventListener("click", () => zoomOnObject(hiddenQRCode));
 
-document.getElementById("aperisolveImg").addEventListener("click", openAperiSolve);
+document.getElementById("aperisolve").addEventListener("click", openAperiSolve);
+
+document.getElementById("forensically").addEventListener("click", openForensically);
