@@ -1,0 +1,20 @@
+Vous êtes en stage chez un professeur en criminalistique. Grand amateur d’énigmes et de puzzles, il vous propose, à la fin de la journée, un défi basé sur la stéganographie. Caché dans une image, un QR code mène à un mot de passe chiffré par le chiffrement de César – l’accès à son ordinateur. Avant de partir, il vous demande de venir un peu plus tard que d’habitude le lendemain.
+
+Le lendemain justement, le professeur se fait attendre et ne semble pas répondre au téléphone. Sans lui, vous ne pouvez pas entrer dans le laboratoire. Vous décidez donc d'aller prendre de ses nouvelles directement chez lui.
+
+Arrivé chez lui, la porte est entrouverte et vous tombez nez à nez avec sur quelqu'un. Celui-ci vous explique qu'il est inspecteur de police et avait normalement rendez-vous avec le professeur, mais qu'il a trouvé son appartement dans un état inquiétant. Vous tentez d’appeler le professeur une dernière fois et entendez la sonnerie résonner à l’intérieur. Son téléphone est toujours là. Mauvais signe.
+L'inspecteur est formel : le professeur est en danger. Vous devez le retrouver au plus vite. En fouillant son téléphone, vous tombez sur une piste qui mène à une imprimerie, située en zone industrielle.
+
+Celle-ci est gardée, mais vous décidez tout de même de vous y infiltrer. Dans la salle des moniteurs, vous prenez le contrôle des flux vidéo pour couvrir l'avancée de l'inspecteur. Mission accomplie : il revient sain et sauf, et vous fait part de sa découverte : cette imprimerie fabrique également de faux documents.
+
+Vous proposez d’alerter la police, mais l’inspecteur vous arrête. Il vous confie alors un secret : il n'est plus en service. Autrefois inspecteur, il a été démis de ses fonctions après un incident impliquant la mafia. Pourtant, il n’a jamais cessé de traquer l'organisation et cherche à se venger. Le professeur était son allié dans cette quête, et leur rendez-vous manqué devait lui révéler des découvertes cruciales.
+
+Grâce à la carte d'accès du professeur récupérée chez lui, vous entrez enfin dans son laboratoire. Le mot de passe étant inchangé depuis la veille, vous accédez à son ordinateur. En fouillant ses fichiers, vous découvrez qu'il tentait d'infiltrer un serveur. Il semblait enfin avoir réussi à déchiffrer les messages d’un forum. Vous apprenez que ce chiffrement par cryptographie distribuée possède trois auteurs, dont l’un d’eux est le professeur.
+
+Vous retrouvez un échange avec la personne qui a saccagé son appartement et décidez de lui tendre un piège. Une fois le suspect appréhendé par l'inspecteur, celui-ci vous confie son téléphone, déverrouillé par biométrie, pour que vous trouviez de nouvelles pistes. Pendant que l'inspecteur interroge le membre de la mafia, qui refuse de coopérer, vous l'aidez à repérer les incohérences dans ses déclarations.
+
+Le suspect finit par admettre être passé chez le professeur, mais affirme que celui-ci n'était déjà plus là. Il confirme que le professeur était autrefois un haut gradé de la mafia et qu'il a sûrement fui dans un autre pays. L'inspecteur, déçu mais résigné, relâche le mafieux qui s'empresse de disparaître. Quant à vous, votre aventure s’arrête ici. Vous êtes trop jeune pour aller plus loin dans cette aventure.
+
+Quelques jours plus tard, vous recevez un message du professeur. Celui-ci vous envoie "son dernier casse-tête".
+
+
