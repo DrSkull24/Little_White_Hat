@@ -141,8 +141,8 @@ function tryPassword(element) {
     var text = element.value;
     if (text == password) {
         goToComputer();
-        if (getCookie("prologue_finished") === null) {
-            setCookie("prologue_finished", "true", 365);
+        if (getCookie("Prologue") === null) {
+            setCookie("Prologue", "true", 365);
         }
         showDialogue();
     } else {
