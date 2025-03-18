@@ -18,7 +18,3 @@ export function getCookie(name) {
     }
     return null;
 }
-// module.exports = {
-//     setCookie,
-//     getCookie
-//   };
