@@ -44,10 +44,6 @@ function goToLaptop() {
     changeScene('laptop');
     document.body.style.backgroundImage = "url('img/laptopBackground.jpg')";
     currentScene = 'laptop';
-    let laptop = document.getElementById('laptop');
-    laptop.querySelectorAll('.folder').forEach(object => {
-        initClosedFolderDisplay(object);
-    });
     manageBackButton('block', goToDesktop);
 }
 
@@ -150,15 +146,6 @@ function tryPassword(element) {
     }
 }
 
-function initClosedFolderDisplay(object) {
-    let closedFolder = object.children[0];
-    let name = object.children[1];
-    let bounding = closedFolder.getBoundingClientRect();
-    name.style.position = 'absolute';
-    name.style.left = bounding.left + bounding.width / 2 - name.width / 2 + 'px';
-    name.style.top = bounding.top + bounding.height - 50 + 'px';
-}
-
 function openFolder(element) {
     element.children[0].style.display = 'none';
     element.children[1].style.display = 'none';
@@ -178,56 +165,29 @@ function closeFolder(element) {
     element.children[2].style.display = 'none';
 }
 
-function openAperiSolve() {
-    let aperiSolve = document.getElementById("aperisolveWeb");
-    if (aperiSolve) {
-        aperiSolve.style.display = 'block';
+function openApp(appId, appLink) {
+    let app = document.getElementById(appId);
+    if (app) {
+        app.style.display = 'block';
     } else {
-        aperiSolve = document.createElement("iframe");
-        aperiSolve.src = "https://www.aperisolve.com";
-        aperiSolve.style.position = "absolute";
-        aperiSolve.style.width = "100%";
-        aperiSolve.style.height = "100%";
-        aperiSolve.style.top = "0";
-        aperiSolve.style.left = "0";
-        aperiSolve.style.zIndex = "10";
-        aperiSolve.id = "aperisolveWeb";
-        document.body.appendChild(aperiSolve);
+        app = document.createElement("iframe");
+        app.src = appLink;
+        app.style.position = "absolute";
+        app.style.width = "100%";
+        app.style.height = "100%";
+        app.style.top = "0";
+        app.style.left = "0";
+        app.style.zIndex = "10";
+        app.id = appId;
+        document.body.appendChild(app);
     }
-    manageBackButton('block', closeAperiSolve);
+    manageBackButton('block', () => closeApp(appId));
 }
 
-function closeAperiSolve() {
-    const aperiSolve = document.getElementById("aperisolveWeb"); 
-    if (aperiSolve) {
-        aperiSolve.style.display = 'none'; 
-    }
-    manageBackButton('block', goToDesktop);
-}
-
-function openForensically() {
-    let forensically = document.getElementById("forensicallyWeb");
-    if (forensically) {
-        forensically.style.display = 'block';
-    } else {
-        forensically = document.createElement("iframe");
-        forensically.src = "https://29a.ch/photo-forensics/#pca";
-        forensically.style.position = "absolute";
-        forensically.style.width = "100%";
-        forensically.style.height = "100%";
-        forensically.style.top = "0";
-        forensically.style.left = "0";
-        forensically.style.zIndex = "10";
-        forensically.id = "forensicallyWeb";
-        document.body.appendChild(forensically);
-    }
-    manageBackButton('block', closeForensically);
-}
-
-function closeForensically() {
-    const forensically = document.getElementById("forensicallyWeb"); 
-    if (forensically) {
-        forensically.style.display = 'none'; 
+function closeApp(appId) {
+    const app = document.getElementById(appId);
+    if (app) {
+        app.style.display = 'none';
     }
     manageBackButton('block', goToDesktop);
 }
@@ -305,6 +265,8 @@ closedFolder.addEventListener("click", () => openFolder(closedFolder.parentEleme
 let hiddenQRCode = document.getElementById("hiddenQRCode");
 hiddenQRCode.addEventListener("click", () => zoomOnObject(hiddenQRCode));
 
-document.getElementById("aperisolve").addEventListener("click", openAperiSolve);
+document.getElementById("aperisolve").addEventListener("click", () => openApp("aperisolveWeb", "https://www.aperisolve.com"));
 
-document.getElementById("forensically").addEventListener("click", openForensically);
+document.getElementById("forensically").addEventListener("click", () => openApp("forensicallyWeb", "https://29a.ch/photo-forensics/#pca"));
+
+document.getElementById("exifReader").addEventListener("click", () => openApp("exifReaderWeb", "https://tools.waytolearnx.com/exif-reader?set_language=Français"));

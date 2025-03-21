@@ -77,22 +77,30 @@ textarea {
     height: 15%;
 }
 
-#folderName {
-    color: white;
+.folder {
     position: relative;
-    left: 3%;
+    width: 8vw;
+    height: 8vw;
+    z-index: 1;
+} 
+
+.folder #folderName {
+    color: white;
+    position: absolute;
+    bottom: -10%;
+    left: 25%;
 }
 
-#closedFolder {
-    width: 12vw;
-    height: 12vw;
+.folder #closedFolder {
+    width: 8vw;
+    height: 8vw;
 }
 
-#openFolder {
+.folder #openFolder {
     display: none;
 }
 
-#quitFolder {
+.folder #quitFolder {
     position: absolute;
     width: 25px;
     height: 25px;
@@ -101,8 +109,8 @@ textarea {
 
 .app {
     padding-left: 2%;
-    width: 8vw;
-    height: 10vw;
+    width: 4vw;
+    height: 6vw;
     cursor: pointer;
     margin: 3% 0 3% 0;
 }

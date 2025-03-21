@@ -5,6 +5,6 @@
     { "name": "Professeur", "text": "Peut être mais cette fois c'est vraiment le cas. Tu as normalement reçu l'image d'un célèbre empereur romain. Ton but est de déverrouiller cet ordinateur. Bon courage. Et n'oublie pas que tu as des indices comme à chaque fois." },
     { "name": "{{username}}", "text": "Ok, donc c'est parti. Plus vite je résous ce problème, plus vite je pourrais rentrer." },
     { "name": "{{username}}", "text": "C'est bon, épreuve terminée." },
-    { "name": "Professeur", "text": "Bon travail. Tu vois je te l'avais dit que ce n'était pas si difficile. Tu peux rentrer chez toi maintenant. Ah oui et nous commencerons un peu plus tard demain matin. Donc rendez-vous vous vers 11h je pense." },
+    { "name": "Professeur", "text": "Bon travail. Tu vois je te l'avais dit que ce n'était pas si difficile. Tu peux rentrer chez toi maintenant. Ah oui et nous commencerons un peu plus tard demain matin. Donc rendez-vous vers 11h je pense." },
     { "name": "{{username}}", "text": "C'est noté, à demain." }
   ]
