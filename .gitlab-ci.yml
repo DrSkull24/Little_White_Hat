@@ -1,0 +1,10 @@
+stages:
+  - deploy
+
+deploy_to_vercel:
+  stage: deploy
+  script:
+    - npm install -g vercel
+    - vercel --prod --token=$VERCEL_TOKEN
+  only:
+    - main
