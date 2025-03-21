@@ -18,3 +18,15 @@ export function getCookie(name) {
     }
     return null;
 }
+
+export function deleteCookie(name) {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
+}
+
+export function deleteAllCookies() {
+    let cookies = document.cookie.split('; ');
+    for (let cookie of cookies) {
+        let [key] = cookie.split('=');
+        deleteCookie(key);
+    }
+}
