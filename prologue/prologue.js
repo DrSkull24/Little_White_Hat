@@ -1,13 +1,11 @@
 import { getCookie, setCookie } from "../cookies.js";
+import {loadDialogues, showDialogue} from "../dialogues.js";
 
 let isCleared = false;
 let password = 'Lecodeestbienvenulittlewhitehat';
 let styleBeforeZoom;
 let currentScene = 'desktop';
 let laptopVisited = false;
-let currentDialogueIndex = 0;
-let dialogues;
-let stopDialogues = [5, 8];
 
 function changeScene(sceneId) {
     document.querySelectorAll('.scene').forEach(scene => {
@@ -17,7 +15,7 @@ function changeScene(sceneId) {
 }
 
 function manageBackButton(display, functionToCall) {
-    var backButton = document.getElementById('backButton');
+    let backButton = document.getElementById('backButton');
     backButton.style.display = display;
     backButton.onclick = functionToCall;
     addEventListener('keydown', function(event) {
@@ -72,7 +70,7 @@ function zoomOnObject(object) {
     });
 
     if (object.id === 'hiddenQRCode') {
-        var btn = document.createElement('button');
+        let btn = document.createElement('button');
         btn.onclick = function() {
             downloadFile(object.src);
         };
@@ -81,7 +79,7 @@ function zoomOnObject(object) {
         btn.style.position = 'absolute';
         btn.style.width = '10%';
         btn.style.height = '5%';
-        var bounding = object.getBoundingClientRect();
+        let bounding = object.getBoundingClientRect();
         btn.style.top = bounding.top + bounding.height + 15 + 'px';
         btn.style.left = "45%";
         object.parentElement.appendChild(btn);
@@ -134,13 +132,13 @@ function handleEnterKey(event, element) {
 }
 
 function tryPassword(element) {
-    var text = element.value;
+    let text = element.value;
     if (text == password) {
         goToComputer();
         if (getCookie("Prologue") === null) {
             setCookie("Prologue", "true", 365);
+            showDialogue(1);
         }
-        showDialogue();
     } else {
         alert('mot de passe incorrect');
     }
@@ -150,8 +148,8 @@ function openFolder(element) {
     element.children[0].style.display = 'none';
     element.children[1].style.display = 'none';
     element.children[2].style.display = 'block';
-    var folderBackground = element.children[2].children[0];
-    var quitFolder = element.children[2].children[1];
+    let folderBackground = element.children[2].children[0];
+    let quitFolder = element.children[2].children[1];
     quitFolder.style.left = folderBackground.style.left + folderBackground.width - 30 + 'px';
     quitFolder.style.top = folderBackground.style.top + 10 + "px";
     quitFolder.onclick = function() {
@@ -191,53 +189,6 @@ function closeApp(appId) {
     }
     manageBackButton('block', goToDesktop);
 }
-
-fetch('dialogues.json')
-  .then(response => response.json())
-  .then(dialoguesJSON => {
-    const username = getCookie('username');  
-
-    dialoguesJSON.forEach(dialogue => {
-      if (dialogue.name.includes("{{username}}")) {
-        dialogue.name = dialogue.name.replace("{{username}}", username);
-      }
-    });
-    
-    dialogues = dialoguesJSON;
-    showDialogue();
-  })
-  .catch(error => console.error('Erreur lors du chargement des dialogues:', error));
-
-const dialogueContainer = document.getElementById("dialogue-container");
-const dialogueText = document.getElementById("dialogue-text");
-const speakerName = document.getElementById("speaker-name");
-
-function showDialogue() {
-    const currentDialogue = dialogues[currentDialogueIndex];
-    speakerName.textContent = currentDialogue.name + " :";
-    dialogueText.textContent = currentDialogue.text;
-    dialogueContainer.style.display = "block";
-  }
-  
-function nextDialogue() {
-    currentDialogueIndex++;
-    if (currentDialogueIndex < dialogues.length && currentDialogueIndex !== 5) {
-        showDialogue();
-    } else {
-        dialogueContainer.style.display = "none";
-    }
-}
-
-function skipDialogues() {
-    while (!stopDialogues.includes(currentDialogueIndex)) {
-        currentDialogueIndex++;
-    }
-    dialogueContainer.style.display = "none";
-}
-
-document.getElementById("next-dialogue").addEventListener("click", nextDialogue);
-document.getElementById("skip-dialogues").addEventListener("click", skipDialogues);
-
 function showHints() {
     hintButton.style.display = 'none';
     hintBox.style.display = 'block';
@@ -270,3 +221,7 @@ document.getElementById("aperisolve").addEventListener("click", () => openApp("a
 document.getElementById("forensically").addEventListener("click", () => openApp("forensicallyWeb", "https://29a.ch/photo-forensics/#pca"));
 
 document.getElementById("exifReader").addEventListener("click", () => openApp("exifReaderWeb", "https://tools.waytolearnx.com/exif-reader?set_language=Français"));
+
+if (getCookie("Prologue") === null) {
+    loadDialogues();
+}
