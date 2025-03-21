@@ -3,8 +3,11 @@ stages:
 
 deploy_to_vercel:
   stage: deploy
+  image: node:latest
+  before_script:
+    - npm install -g vercel 
   script:
-    - npm install -g vercel
-    - vercel --prod --token=$VERCEL_TOKEN
+    - vercel --version 
+    - vercel --prod --token=$VERCEL_TOKEN 
   only:
     - master
