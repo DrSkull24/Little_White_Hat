@@ -1,4 +1,4 @@
-import { getCookie, setCookie } from "./cookies.js";
+import { getCookie, setCookie, deleteAllCookies } from "./cookies.js";
 
 function selectChapter() {
     const chapters = ["Prologue", "Chapitre 1", "Chapitre 2"];
@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("username").textContent = username
     }
     document.getElementById("changeUsername").onclick = changeUsername;
+    document.getElementById("resetButton").onclick = resetGame;
     const text = "Bienvenue dans Little White Hat, un jeu d'investigation numérique. Serez-vous à la hauteur ?";
     let index = 0;
     let startButton = document.getElementById("startButton");
@@ -63,5 +64,12 @@ function changeUsername() {
     if (username) {
         setCookie("username", username, 365);
         document.getElementById("username").textContent = username;
+    }
+}
+
+function resetGame() {
+    if (confirm("Voulez-vous vraiment effacer toutes vos données de jeu ? Cette action est irréversible.")) {
+        deleteAllCookies();
+        window.location.reload();
     }
 }
