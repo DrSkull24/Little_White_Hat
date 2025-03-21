@@ -7,4 +7,4 @@ deploy_to_vercel:
     - npm install -g vercel
     - vercel --prod --token=$VERCEL_TOKEN
   only:
-    - main
+    - master
