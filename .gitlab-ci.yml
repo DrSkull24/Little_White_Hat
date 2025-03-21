@@ -5,9 +5,9 @@ deploy_to_vercel:
   stage: deploy
   image: node:latest
   before_script:
-    - npm install -g vercel 
+    - npm install -g vercel
   script:
-    - vercel --version 
-    - vercel --prod --token=$VERCEL_TOKEN 
+    - vercel --version
+    - vercel deploy --prod --yes --token=$VERCEL_TOKEN 
   only:
     - master
