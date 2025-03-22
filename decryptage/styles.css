@@ -1,0 +1,219 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1e1e1e;
+    color: #fff;
+    margin: 0;
+    padding: 20px;
+}
+
+.explorer {
+    background-color: #2d2d2d;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+h1 {
+    color: #7286e0;
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.toolbox-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.toolbox-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #3d3d3d;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 80%;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: auto;
+}
+
+.toolbox-content {
+    text-align: center;
+}
+
+.tool-interface {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #3d3d3d;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 80%;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: auto;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #ff5555;
+}
+
+.close-btn:hover {
+    color: #ff7777;
+}
+
+.tool:hover {
+    background-color: #5d5d5d;
+}
+
+.tool::before {
+    font-size: 40px;
+    margin-bottom: 5px;
+}
+
+.tool-interface input {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    width: calc(100% - 120px);
+    margin-right: 10px;
+}
+
+.tool-interface button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.tool-interface button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+#search-results {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #2d2d2d;
+    border-radius: 5px;
+    font-family: monospace;
+    line-height: 1.5;
+}
+
+#decrypt-message {
+    margin-top: 10px;
+    color: #ff5555;
+    font-weight: bold;
+}
+
+.file-list {
+    margin-top: 20px;
+}
+
+.file {
+    padding: 10px;
+    background-color: #3d3d3d;
+    margin: 5px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.file:hover {
+    background-color: #4d4d4d;
+    transform: translateY(-2px);
+}
+
+.file-content {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #3d3d3d;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#file-output {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background-color: #2d2d2d;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: monospace;
+    line-height: 1.5;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #2d2d2d;
+    border-radius: 10px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.progress-bar .progress {
+    width: 0;
+    height: 100%;
+    background-color: #4CAF50;
+    border-radius: 10px;
+    transition: width 2s ease-in-out;
+}
+
+.forensic-info {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #2d2d2d;
+    border-radius: 5px;
+    font-family: monospace;
+    line-height: 1.5;
+}
+
+.forensic-info h3 {
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+.forensic-info p {
+    margin: 5px 0;
+}
+
+#access-server-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#access-server-btn:hover {
+    background-color: #45a049;
+}

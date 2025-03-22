@@ -1,0 +1,153 @@
+body {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    font-family: "Roboto Mono", monospace;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.server-logs {
+    background-color: #2d2d2d;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    color: #ff5555; /* Rouge au lieu de vert */
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.terminal {
+    background-color: #1e1e1e;
+    border: 1px solid #444;
+    padding: 15px;
+    height: 400px;
+    overflow-y: auto;
+    font-size: 14px;
+    line-height: 1.5;
+    border-radius: 5px;
+}
+
+.toolbox-icon {
+    background-color: #ff5555; /* Rouge au lieu de vert */
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.toolbox-icon:hover {
+    background-color: #ff3333; /* Rouge plus foncé au survol */
+}
+
+.toolbox-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #3d3d3d;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    width: 300px;
+}
+
+.tool-interface {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #3d3d3d;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    width: 300px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #ff5555; /* Rouge au lieu de vert */
+}
+
+.close-btn:hover {
+    color: #ff7777; /* Rouge plus clair au survol */
+}
+
+.tool-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+button {
+    background-color: #ff5555; /* Rouge au lieu de vert */
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ff3333; /* Rouge plus foncé au survol */
+}
+
+#location-result {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #ff5555; /* Rouge au lieu de vert */
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.footer {
+    margin-top: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+#gps-coordinates {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #ff5555; /* Rouge pour correspondre au thème */
+}

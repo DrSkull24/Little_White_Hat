@@ -1,0 +1,47 @@
+[2025-03-01 03:47] [+33655667788] Appel sortant -> +33666778899 (7 min)
+[2025-03-01 04:12] [+33655667788] Connection Wifi -> 00:14:22:01:23:45
+[2025-03-01 04:23] [SERVER] Transaction validée - Montant: 15,000€ -> Compte #5432-AB
+[2025-03-01 05:08] [+33666778899] Message -> "J'ai reçu le signal de l'équipe de préparation. La planque est prête. On se retrouve à 15h."
+[2025-03-01 05:34] [+33677889900] Appel entrant <- +33666778899 (3 min)
+[2025-03-01 06:01] [+33677889900] Connection Wifi -> 00:16:17:02:34:56
+[2025-03-01 06:45] [SERVER] VPN activé pour 192.168.12.45
+[2025-03-01 07:12] [+33688990011] Appel sortant -> +33655667788 (9 min)
+[2025-03-01 07:56] [+33688990011] Connection Wifi -> 00:18:19:03:45:67
+[2025-03-01 08:23] [SERVER] Transfert de 35,000€ en attente de validation.
+[2025-03-01 09:07] [+33666778899] Message -> "On se retrouve à 14h à l'entrepôt."
+[2025-03-01 09:34] [+33655667788] Appel sortant -> +33677889900 (6 min)
+[2025-03-01 10:12] [+33699001122] Connection Wifi -> 00:20:21:04:56:78
+[2025-03-01 10:45] [SERVER] Message crypté reçu: "Livraison prévue à l'heure indiquée."
+[2025-03-01 12:34] [+33699001122] Message -> "Est-ce qu'on peut toujours faire des papiers ?"
+[2025-03-01 11:23] [+33677889900] Message -> "Nos partenaires de l'imprimerie sont à ta disposition."
+[2025-03-01 12:08] [+33688990011] Appel entrant <- +33666778899 (5 min)
+[2025-03-01 13:12] [+33655667788] Message -> "Je vais vérifier l'entrepôt."
+[2025-03-01 13:47] [SERVER] Transfert validé - Montant: 35,000€ -> Compte #7845-XD
+[2025-03-01 14:23] [+33666778899] Connection Wifi -> 00:16:17:02:34:56
+[2025-03-01 15:08] [+33655667788] Appel sortant -> +33688990011 (11 min)
+[2025-03-01 15:34] [SERVER] Connexion SSH établie - Terminal distant #192.168.55.100
+[2025-03-01 16:12] [+33677889900] Message -> "Tout est en place, on attend les instructions."
+[2025-03-01 16:45] [+33688990011] Appel entrant <- +33655667788 (8 min)
+[2025-03-01 17:23] [+33655667788] Connection Wifi -> 00:22:23:05:67:89
+[2025-03-01 18:07] [+33666778899] Message -> "Nous sommes prêts à partir. Rendez-vous à la planque."
+[2025-03-01 18:34] [SERVER] Proxy changé pour 85.214.132.42
+[2025-03-01 19:12] [+33677889900] Appel sortant -> +33655667788 (4 min)
+[2025-03-01 19:47] [+33655667788] Connection Wifi -> 00:16:17:02:34:56
+[2025-03-01 20:23] [SERVER] Serveur redémarré - Mise à jour de sécurité appliquée.
+[2025-03-01 21:08] [SERVER] Alerte : Tentative de connexion non autorisée depuis 192.168.12.100
+[2025-03-01 21:34] [+33655667788] Message -> "On dirait que certains de nos aciens collaborateurs se sont infiltrés."
+[2025-03-01 22:12] [SERVER] Transfert de 50,000€ en attente de validation.
+[2025-03-01 22:45] [+33677889900] Message -> "Les livraisons sont en route. Tout est sous contrôle."
+[2025-03-01 23:23] [SERVER] Connexion VPN établie pour 192.168.12.45
+[2025-03-01 23:47] [+33655667788] Appel sortant -> +33666778899 (6 min)
+[2025-03-02 00:12] [SERVER] Alerte : Activité suspecte détectée sur le réseau.
+[2025-03-02 00:34] [+33666778899] Message -> "C'est bon l'entrepôt a été vidé. On peut le laisser désert."
+[2025-03-02 01:08] [+33688990011] Connection Wifi -> 00:18:19:03:45:67
+[2025-03-02 01:23] [SERVER] Transfert validé - Montant: 50,000€ -> Compte #7845-XD
+[2025-03-02 02:12] [+33677889900] Message -> "La cargaison est livrée. Tout est en ordre."
+[2025-03-02 02:45] [SERVER] Connexion SSH établie - Terminal distant #192.168.55.101
+[2025-03-02 03:23] [+33677889900] Message -> "Les partenaires sont satisfaits. On continue comme ça."
+[2025-03-02 03:47] [SERVER] Proxy changé pour 85.214.132.43
+[2025-03-02 04:12] [+33666778899] Connection Wifi -> 00:22:23:05:67:89
+[2025-03-02 04:34] [SERVER] Alerte : Tentative de piratage détectée. Blocage en cours.
+[2025-03-02 05:08] [+33666778899] Message -> "La planque est sécurisée. On reste vigilants."

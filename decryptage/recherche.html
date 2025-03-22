@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorateur de Fichiers</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="explorer">
+        <h1>Explorateur de Fichiers</h1>
+        <div class="toolbox-icon" onclick="openToolbox()">
+            🛠️
+        </div>
+        <div class="file-list" id="file-list">
+            <!-- Les fichiers du dossier "fichiers" apparaîtront ici -->
+        </div>
+        <div class="file-content">
+            <h2>Contenu du fichier</h2>
+            <pre id="file-output">Sélectionnez un fichier pour afficher son contenu.</pre>
+        </div>
+    </div>
+
+    <!-- Popup de la boîte à outils -->
+    <div class="toolbox-popup" id="toolbox-popup">
+        <span class="close-btn" onclick="closeToolbox()">❌</span>
+        <div class="toolbox-content">
+            <h2>Boîte à outils</h2>
+            <div class="tool" onclick="openTool('search')">
+                <span style="font-size: 40px;">🔍</span>
+                <span>Recherche de mots</span>
+            </div>
+            <div class="tool" onclick="openTool('decrypt')">
+                <span style="font-size: 40px;">🔓</span>
+                <span>Décryptage</span>
+            </div>
+            <div class="tool" onclick="openTool('analyze')">
+                <span style="font-size: 40px;">🔎</span>
+                <span>Analyse de fichiers</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interface de recherche de mots -->
+    <div class="tool-interface" id="search-tool">
+        <span class="close-btn" onclick="closeTool()">❌</span>
+        <h2>Recherche de mots</h2>
+        <input type="text" id="search-keyword" placeholder="Entrez un mot clé...">
+        <button onclick="searchKeyword()">Rechercher</button>
+        <div id="search-results"></div>
+    </div>
+
+    <!-- Interface de décryptage -->
+    <div class="tool-interface" id="decrypt-tool">
+        <span class="close-btn" onclick="closeTool()">❌</span>
+        <h2>Décryptage</h2>
+        <input type="text" id="file-name" placeholder="Nom du fichier à décrypter">
+        <input type="text" id="decrypt-key" placeholder="Entrez la clé de décryptage">
+        <button onclick="decryptFile()">Décrypter</button>
+        <p id="decrypt-message"></p>
+        <button id="access-server-btn" style="display: none;" onclick="accessServer()">Accéder au Serveur secret</button>
+        <div class="decrypt-info">
+            <h3>Qu'est-ce que le décryptage ?</h3>
+            <p>
+                Le décryptage est le processus de conversion de données chiffrées (cryptées) en données lisibles. 
+                Dans le cadre de l'investigation numérique, le décryptage est essentiel pour accéder à des informations protégées par des techniques de cryptage.
+            </p>
+            <p>
+                Les enquêteurs utilisent des clés de décryptage pour déchiffrer les données. Ces clés sont souvent des mots de passe ou des codes spécifiques.
+                Des outils comme <strong>John the Ripper</strong> et <strong>Hashcat</strong> sont couramment utilisés pour tenter de retrouver ces clés.
+            </p>
+        </div>
+    </div>
+
+    <!-- Interface d'analyse de fichiers -->
+    <div class="tool-interface" id="analyze-tool">
+        <span class="close-btn" onclick="closeTool()">❌</span>
+        <h2>Analyse de fichiers</h2>
+        <button onclick="analyzeFile()">Analyser le PC</button>
+        <div class="progress-bar" id="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <div id="analyze-results">
+            <!-- Les résultats de l'analyse apparaîtront ici -->
+        </div>
+        <div class="forensic-info">
+            <h3>Qu'est-ce que le forensic numérique ?</h3>
+            <p>
+                Le forensic numérique est une discipline qui consiste à analyser des données pour résoudre des enquêtes.
+                Des outils comme <strong>Autopsy</strong>, <strong>FTK (Forensic Toolkit)</strong>, et <strong>EnCase</strong> sont utilisés pour examiner des fichiers, des disques durs, et même des appareils mobiles.
+            </p>
+            <p>
+                Ces outils permettent de détecter des fichiers cryptés, récupérer des données supprimées, et analyser des métadonnées.
+            </p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

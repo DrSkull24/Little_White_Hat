@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lire et Écrire les Métadonnées</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>📷 Lire et Écrire les Métadonnées</h1>
+    <div class="container">
+        <!-- Section pour lire les métadonnées -->
+        <div class="section">
+            <h2>🔍 Lire les Métadonnées</h2>
+            <p>Cette fonction affiche les métadonnées de la dernière image enregistrée.</p>
+            <button id="afficher-metadata">Afficher les Métadonnées</button>
+            <p id="metaResult">Aucune métadonnée affichée.</p>
+        </div>
+
+        <!-- Section pour ajouter des coordonnées GPS -->
+        <div class="section">
+            <h2>🌍 Ajouter des Coordonnées GPS</h2>
+            <p>Cette fonction écrit les coordonnées GPS directement dans la dernière image enregistrée. (Uniquement pour l'image cheval.jpg)</p>
+            <label for="latitude">Latitude :</label>
+            <input type="text" id="latitude" placeholder="Ex: 48.8566">
+            <label for="longitude">Longitude :</label>
+            <input type="text" id="longitude" placeholder="Ex: 2.3522">
+            <button id="ajouter-coordonnees">Ajouter les Coordonnées</button>
+            <p id="chevalMetaResult">Aucune métadonnée pour cheval.jpg.</p>
+        </div>
+    </div>
+
+    <a href="../index.html">⬅ Retour</a>
+</body>
+</html>

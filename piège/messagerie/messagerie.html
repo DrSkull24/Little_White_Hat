@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messagerie Secrète</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <h1>📩 Messagerie Secrète</h1>
+    <div class="container">
+        <!-- Liste des utilisateurs -->
+        <div class="utilisateurs" id="utilisateurs">
+            <h2>Utilisateurs</h2>
+            <ul id="liste-utilisateurs"></ul>
+        </div>
+
+        <!-- Conversation sélectionnée -->
+        <div class="conversation" id="conversation">
+            <h2 id="nom-utilisateur">Conversation</h2>
+            <div id="messages"></div>
+        </div>
+    </div>
+
+    <!-- Boutons pour se connecter et envoyer des messages -->
+    <div id="bouton-envoyer" style="text-align: center; margin-top: 20px;">
+        <!-- Formulaire de connexion -->
+        <div class="formulaire-connexion">
+            <h3>Connexion</h3>
+            <input type="text" id="identifiant" placeholder="Identifiant" class="input-connexion">
+            <input type="password" id="mot-de-passe" placeholder="Mot de passe" class="input-connexion">
+            <button onclick="seConnecter()" class="bouton-connexion">Se connecter</button>
+        </div>
+
+        <!-- Bouton d'envoi de message -->
+        <button id="bouton-envoyer-message" class="bouton-envoyer">Sélectionnez un utilisateur et connectez-vous</button>
+    </div>
+
+    <!-- Bulle pour afficher les messages temporaires -->
+    <div id="bulle-message" class="bulle-message">
+        <span id="bulle-texte"></span>
+    </div>
+
+    <a href="../index.html">⬅ Retour</a>
+</body>
+</html>
