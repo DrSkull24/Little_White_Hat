@@ -51,10 +51,23 @@ export function showDialogue(dialoguePartIndex = 0, functionToCall = null) {
     endDialogueFunction = functionToCall;
     const currentDialogue = dialogues[dialoguePartIndex][currentDialogueIndex];
     speakerName.textContent = currentDialogue.name + " :";
-    dialogueText.textContent = currentDialogue.text;
     dialogueContainer.style.display = "block";
+
+    let text = currentDialogue.text;
+    dialogueText.textContent = "";
+    let charIndex = 0;
+
+    const typeWriterEffect = setInterval(() => {
+        if (charIndex < text.length) {
+            dialogueText.textContent += text[charIndex];
+            charIndex++;
+        } else {
+            clearInterval(typeWriterEffect);
+        }
+    }, 50/getCookie("textSpeed")); // Adjust typing speed here (in milliseconds)
+
     currentDialogueIndex++;
-  }
+}
 
 function nextDialogue() {
     if (currentDialogueIndex < dialogues[currentDialoguePartIndex].length) {

@@ -80,15 +80,34 @@ function openSettings() {
         dialogueResetCheckbox.type = "checkbox";
         dialogueResetCheckbox.id = "dialogueResetCheckbox";
         dialogueResetCheckbox.checked = getCookie("dialogueReset") === "true";
-        dialogueResetCheckbox.onchange = () => {
-            setCookie("dialogueReset", dialogueResetCheckbox.checked, 365);
-        }
+        dialogueResetCheckbox.onchange = () => {setCookie("dialogueReset", dialogueResetCheckbox.checked, 365);}
         dialogueReset.appendChild(dialogueResetCheckbox);
         let dialogueResetLabel = document.createElement("label");
         dialogueResetLabel.htmlFor = "dialogueResetCheckbox";
         dialogueResetLabel.textContent = "Afficher les dialogues à chaque raffraîssement de la page";
         dialogueReset.appendChild(dialogueResetLabel);
         settingsList.appendChild(dialogueReset);
+
+        let textSpeedControl = document.createElement("li");
+        let textSpeedLabel = document.createElement("label");
+        textSpeedLabel.textContent = "Vitesse du texte : ";
+        let textSpeedSlider = document.createElement("input");
+        textSpeedSlider.type = "range";
+        textSpeedSlider.min = "1";
+        textSpeedSlider.max = "5";
+        textSpeedSlider.value = getCookie("textSpeed");
+        textSpeedSlider.oninput = () => {
+            setCookie("textSpeed", textSpeedSlider.value, 365);
+        };
+        let textSpeedValue = document.createElement("span");
+        textSpeedValue.textContent = textSpeedSlider.value;
+        textSpeedSlider.onchange = () => {
+            textSpeedValue.textContent = textSpeedSlider.value;
+        }
+        textSpeedControl.appendChild(textSpeedLabel);
+        textSpeedControl.appendChild(textSpeedValue);
+        textSpeedControl.appendChild(textSpeedSlider);
+        settingsList.appendChild(textSpeedControl);
 
         document.body.appendChild(settingsDiv); 
     } else {
@@ -107,6 +126,9 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("changeUsername").onclick = changeUsername;
     document.getElementById("resetButton").onclick = resetGame;
     document.getElementById("settingsButton").onclick = openSettings;
+    if (getCookie("textSpeed") === null) {
+        setCookie("textSpeed", 2, 365);
+    }
     const text = "Bienvenue dans Little White Hat, un jeu d'investigation numérique. Serez-vous à la hauteur ?";
     let index = 0;
     let startButton = document.getElementById("startButton");
