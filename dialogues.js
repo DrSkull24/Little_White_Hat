@@ -7,6 +7,7 @@ let dialogueContainer;
 let dialogueText;
 let speakerName;
 let endDialogueFunction
+let typeWriterEffect;
 
 
 export function loadDialogues(functionToCall = null) {
@@ -57,19 +58,20 @@ export function showDialogue(dialoguePartIndex = 0, functionToCall = null) {
     dialogueText.textContent = "";
     let charIndex = 0;
 
-    const typeWriterEffect = setInterval(() => {
+    typeWriterEffect = setInterval(() => {
         if (charIndex < text.length) {
             dialogueText.textContent += text[charIndex];
             charIndex++;
         } else {
             clearInterval(typeWriterEffect);
         }
-    }, 50/getCookie("textSpeed")); // Adjust typing speed here (in milliseconds)
+    }, 50/getCookie("textSpeed"));
 
     currentDialogueIndex++;
 }
 
 function nextDialogue() {
+    clearInterval(typeWriterEffect);
     if (currentDialogueIndex < dialogues[currentDialoguePartIndex].length) {
         showDialogue(currentDialoguePartIndex, endDialogueFunction);
     } else {
@@ -78,6 +80,7 @@ function nextDialogue() {
 }
 
 function endDialogues() {
+    clearInterval(typeWriterEffect);
     currentDialogueIndex = 0;
     dialogueContainer.style.display = "none";
     if (endDialogueFunction) endDialogueFunction();
