@@ -28,7 +28,6 @@ function manageBackButton(display, functionToCall) {
 function goToComputer() {
     changeScene('computer');
     document.body.style.backgroundImage = "url('img/computer.png')";
-    currentScene = 'computer';
     manageBackButton('block', goToDesktop);
 }
 
@@ -41,7 +40,6 @@ function goToLaptop() {
     }
     changeScene('laptop');
     document.body.style.backgroundImage = "url('img/laptopBackground.jpg')";
-    currentScene = 'laptop';
     manageBackButton('block', goToDesktop);
 }
 
@@ -49,7 +47,6 @@ function goToLaptop() {
 function goToDesktop() {
     changeScene('desktop');
     document.body.style.backgroundImage = "url('img/desktop.jpg')";
-    currentScene = 'desktop';
     manageBackButton('none', null);
 }
 
@@ -217,10 +214,9 @@ let hiddenQRCode = document.getElementById("hiddenQRCode");
 hiddenQRCode.addEventListener("click", () => zoomOnObject(hiddenQRCode));
 
 document.getElementById("aperisolve").addEventListener("click", () => openApp("aperisolveWeb", "https://www.aperisolve.com"));
-
 document.getElementById("forensically").addEventListener("click", () => openApp("forensicallyWeb", "https://29a.ch/photo-forensics/#pca"));
-
 document.getElementById("exifReader").addEventListener("click", () => openApp("exifReaderWeb", "https://tools.waytolearnx.com/exif-reader?set_language=Français"));
+document.getElementById("computer").children[0].addEventListener("click", () => window.location.href = "../chapter1/chapter1.html");
 
 if (getCookie("Prologue") === null) {
     loadDialogues();

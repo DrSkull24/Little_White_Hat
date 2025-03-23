@@ -6,9 +6,10 @@ let currentDialoguePartIndex = 0;
 let dialogueContainer;
 let dialogueText;
 let speakerName;
+let endDialogueFunction
 
 
-export function loadDialogues() {
+export function loadDialogues(functionToCall = null) {
     fetch('dialogues.json')
         .then(response => response.json())
         .then(dialoguesJSON => {
@@ -39,13 +40,15 @@ export function loadDialogues() {
             speakerName = document.getElementById("speaker-name");
 
             document.getElementById("next-dialogue").addEventListener("click", nextDialogue);
-            document.getElementById("skip-dialogues").addEventListener("click", skipDialogues);
+            document.getElementById("skip-dialogues").addEventListener("click", endDialogues);
 
-            showDialogue();
+            showDialogue(0, functionToCall);
         }).catch(error => console.error('Erreur lors du chargement des dialogues:', error));
 }
 
-export function showDialogue(dialoguePartIndex = 0) {
+export function showDialogue(dialoguePartIndex = 0, functionToCall = null) {
+    currentDialoguePartIndex = dialoguePartIndex;
+    endDialogueFunction = functionToCall;
     const currentDialogue = dialogues[dialoguePartIndex][currentDialogueIndex];
     speakerName.textContent = currentDialogue.name + " :";
     dialogueText.textContent = currentDialogue.text;
@@ -55,14 +58,14 @@ export function showDialogue(dialoguePartIndex = 0) {
 
 function nextDialogue() {
     if (currentDialogueIndex < dialogues[currentDialoguePartIndex].length) {
-        showDialogue();
+        showDialogue(currentDialoguePartIndex, endDialogueFunction);
     } else {
-        currentDialogueIndex = 0;
-        dialogueContainer.style.display = "none";
+        endDialogues();
     }
 }
 
-function skipDialogues() {
+function endDialogues() {
     currentDialogueIndex = 0;
     dialogueContainer.style.display = "none";
+    if (endDialogueFunction) endDialogueFunction();
 }

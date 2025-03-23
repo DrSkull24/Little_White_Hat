@@ -1,0 +1,23 @@
+<?php
+// Envoyer un code de réponse 500
+http_response_code(500);
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>500 - Erreur interne du serveur</title>
+    <script>
+        // Rediriger vers /Metasploit/index.php après 5 secondes
+        setTimeout(() => {
+            window.location.href = '/Metasploit/index.php';
+        }, 5000); // 5000 millisecondes = 5 secondes
+    </script>
+</head>
+<body>
+    <h1>500 - Erreur interne du serveur</h1>
+    <p>Le serveur est actuellement indisponible.</p>
+    <p>Redirection vers /Metasploit/index.php dans 5 secondes...</p>
+</body>
+</html>
