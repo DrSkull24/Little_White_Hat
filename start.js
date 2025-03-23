@@ -1,6 +1,9 @@
 import { getCookie, setCookie, deleteAllCookies } from "./cookies.js";
 
 function selectChapter() {
+    let settingsDiv = document.getElementById("settingsDiv")
+    if (settingsDiv) settingsDiv.style.display = "none";
+
     const chapters = ["Prologue", "Chapitre 1", "Chapitre 2"];
     const chaptersLinks = ["prologue/prologue.html", "chapter1/chapter1.html", "chapter2/chapter2.html"];
     const chapterSelectionDiv = document.getElementById("chapterSelectionDiv");
@@ -48,6 +51,9 @@ function resetGame() {
 }
 
 function openSettings() {
+    let chapterSelectionDiv = document.getElementById("chapterSelectionDiv");
+    if (chapterSelectionDiv) chapterSelectionDiv.style.display = "none";
+
     let settingsDiv = document.getElementById("settingsDiv");
     if (!settingsDiv) {
         settingsDiv = document.createElement("div");
@@ -80,7 +86,7 @@ function openSettings() {
         dialogueReset.appendChild(dialogueResetCheckbox);
         let dialogueResetLabel = document.createElement("label");
         dialogueResetLabel.htmlFor = "dialogueResetCheckbox";
-        dialogueResetLabel.textContent = "Réinitialiser les dialogues au raffraîchissement de la page";
+        dialogueResetLabel.textContent = "Afficher les dialogues à chaque raffraîssement de la page";
         dialogueReset.appendChild(dialogueResetLabel);
         settingsList.appendChild(dialogueReset);
 
