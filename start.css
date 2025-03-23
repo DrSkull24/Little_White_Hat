@@ -26,6 +26,10 @@ body {
     box-shadow: 0 0 16px 8px rgba(0,0,0,0.5);
 }
 
+#startButton:hover {
+    background-color: #3b883f;
+}
+
 #character {
     position: absolute;
     top: 20%;
@@ -78,6 +82,10 @@ body {
     height: auto;
     margin: 4px 2px;
     box-shadow: 0 0 16px 8px rgba(0,0,0,0.5);
+}
+
+#changeUsername:hover {
+    background-color: #5a5a5a;
 }
 
 .container {
@@ -150,7 +158,7 @@ h1 {
     right: 0;
     background-color: #f44336;
     color: white;
-    font-size: 15px;
+    font-size: 16px;
     padding: 15px 40px;
     border: none;
     cursor: pointer;
@@ -162,4 +170,88 @@ h1 {
     margin: 4px 2px;
     text-decoration: none;
     box-shadow: 0 0 12px 6px rgba(0,0,0,0.5);
+}
+
+#resetButton:hover {
+    background-color: #c2372d;
+}
+
+#settingsButton {
+    position: absolute;
+    top: 10%;
+    right: 0;
+    padding: 0 0.7%;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    width: auto;
+    height: auto;
+    margin: 4px 2px;
+    text-decoration: none;
+    box-shadow: 0 0 12px 6px rgba(0,0,0,0.5);
+}
+
+#settingsButton:hover {
+    background-color: #45a049;
+}
+
+#settingsButton img {
+    width: 90%;
+}
+
+#settingsDiv {
+    display: none;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 0 0 16px 8px rgba(0,0,0,0.5);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#settingsDiv #closeButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #f44336;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#settingsDiv #closeButton:hover {
+    background-color: #c2372d;
+}
+
+#settingsDiv h2 {
+    position: absolute;
+    top: 0;
+    font-size: 2vw;
+    color: black;
+}
+
+#settingsDiv ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
