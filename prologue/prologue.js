@@ -218,6 +218,6 @@ document.getElementById("forensically").addEventListener("click", () => openApp(
 document.getElementById("exifReader").addEventListener("click", () => openApp("exifReaderWeb", "https://tools.waytolearnx.com/exif-reader?set_language=Français"));
 document.getElementById("computer").children[0].addEventListener("click", () => window.location.href = "../chapter1/chapter1.html");
 
-if (getCookie("Prologue") === null) {
+if (getCookie("Prologue") === null || getCookie("dialogueReset") === "true") {
     loadDialogues();
 }

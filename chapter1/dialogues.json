@@ -12,19 +12,19 @@
     [
         { "name": "{{username}}", "text": "Qui êtes-vous et où est le professeur ?" },
         { "name": "???", "text": "Je pourrais vous poser la même question." },
-        { "name": "Ami du professeur", "text": "Je suis un ami du professeur, on devait avoir rendez-vous mais il semblerait qu'il m'est fait faux bond." },
+        { "name": "Ami du professeur", "text": "Je suis un ami du professeur, on devait avoir rendez-vous mais il semblerait qu'il m'ait fait faux bond." },
         { "name": "Ami du professeur", "text": "À ton tour maintenant. Qui es-tu et que fais-tu ici ?" },
         { "name": "{{username}}", "text": "Je suis... le stagiaire du professeur." },
         { "name": "Ami du professeur", "text": "Oui je crois le professeur m'a déjà mentionné ton nom au travers d'une discussion. {{username}} c'est ça ?" },
         { "name": "{{username}}", "text": "Oui, c'est ça. Comme il n'arrivait pas et qu'il ne répondait pas au téléphone j'ai décidé de venir directement ici mais il n'a pas l'air d'être là non plus." },
         { "name": "{{username}}", "text": "Il faut prévenir la police, c'est peut-être grave." },
         { "name": "Ami du professeur", "text": "En effet, je pense qu'il est en danger. Mais la police est déjà là, juste devant toi. Je suis l'inspecteur D.Tektiv" },
-        { "name": "D.Tektiv", "text": "J'enquêtais avec le professeur sur de dangereux criminels appartenant à une mafia. Je suppose que c'est eux les responsables. Il n'y a personne ici donc il est sûrement encore en vie. En revanche, je pense qu'il nous reste très peu de temps." }
+        { "name": "D.Tektiv", "text": "J'enquêtais avec le professeur sur de dangereux criminels appartenant à la mafia. Je suppose que c'est eux les responsables. Il n'y a personne ici donc il est sûrement encore en vie. En revanche, je pense qu'il nous reste très peu de temps." }
     ],
     [
-        { "name": "{{username}}", "text": "(Une sonnerie retentit) C'est le téléphone du professeur pas étonnant qu'il ne répondait pas. C'est un appel de son collègue." },
+        { "name": "{{username}}", "text": "(Une sonnerie retentit) C'est le téléphone du professeur, pas étonnant qu'il ne répondait pas. C'est un appel de son collègue." },
         { "name": "D.Tektiv", "text": "Ça confirme nos peurs. Il faut le retrouver au plus vite." },
-        { "name": "{{username}}", "text": "Malheureusement il est verrouillé." },
+        { "name": "{{username}}", "text": "Malheureusement, le téléphone est verrouillé." },
         { "name": "{{username}}", "text": "Je peux tenter quelques mots de passe mais peu de chance que ça marche." },
         { "name": "{{username}}", "text": "Et le brancher sur mon pc ne servira à rien s'il est verrouillé." },
         { "name": "{{username}}", "text": "Peut-être qu'on peut utiliser l'assistant vocal ?" },
