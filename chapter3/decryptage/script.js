@@ -1,4 +1,5 @@
-// Liste des fichiers texte dans le dossier "fichiers"
+import { loadDialogues, showDialogue } from "../../dialogues.js";
+
 const fileNames = [
     "fichiers/affaires.txt",
     "fichiers/aventure_spatiale.txt",
@@ -161,7 +162,7 @@ function decryptFile() {
 }
 
 function accessServer() {
-    alert("Accès au serveur réussi !");
+    window.location.href = "../mafiaserver/index.html";
 }
 
 function analyzeFile() {
@@ -189,3 +190,17 @@ function analyzeFile() {
 }
 
 loadFiles();
+loadDialogues();
+
+document.getElementById("toolbox-icon").addEventListener("click", () => openToolbox());
+document.getElementById("toolbox-close-btn").addEventListener("click", () => closeToolbox());
+document.getElementById("search").addEventListener("click", () => openTool("search"));
+document.getElementById("decrypt").addEventListener("click", () => openTool("decrypt"));
+document.getElementById("analyze").addEventListener("click", () => openTool("analyze"));
+document.getElementById("search-close-btn").addEventListener("click", () => closeTool());
+document.getElementById("decrypt-close-btn").addEventListener("click", () => closeTool());
+document.getElementById("analyze-close-btn").addEventListener("click", () => closeTool());
+document.getElementById("search-btn").addEventListener("click", () => searchKeyword());
+document.getElementById("decrypt-btn").addEventListener("click", () => decryptFile());
+document.getElementById("analyze-btn").addEventListener("click", () => analyzeFile());
+document.getElementById("access-server-btn").addEventListener("click", () => accessServer());

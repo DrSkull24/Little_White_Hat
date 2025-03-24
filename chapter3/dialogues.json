@@ -1,0 +1,8 @@
+[
+    [
+        { "name": "{{username}}", "text": "Voilà son laboratoire, son ordinateur est toujours là. S'il n'a pas changé son mot de passe on peut espérer trouver beaucoup de choses." }
+    ],
+    [
+        { "name": "{{username}}", "text": "C'est toujours le même qu'hier ! Place à la recherche maintenant." }    
+    ]
+]

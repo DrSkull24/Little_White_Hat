@@ -23,7 +23,7 @@ h1 {
     margin-bottom: 20px;
 }
 
-.toolbox-icon {
+#toolbox-icon {
     position: absolute;
     top: 20px;
     right: 20px;

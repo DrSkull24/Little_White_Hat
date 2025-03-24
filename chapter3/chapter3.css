@@ -1,5 +1,5 @@
 body {
-    background-image: url('img/computer.png');
+    background-image: url('img/desktop.jpg');
     opacity: 100%;
     background-size: 100% 100%;
     background-position: center;
@@ -7,6 +7,10 @@ body {
     min-height: 100vh;
     min-width: 100vw;
     margin: 0;
+}
+
+#computer {
+    display: none;
 }
 
 #folder {
