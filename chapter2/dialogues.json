@@ -11,13 +11,38 @@
         { "name": "{{username}}", "text": "Ce n'est pas un peu extrême ?"},
         { "name": "{{username}}", "text": "Et je ne pense pas que ce soit légal non plus, vous êtes sensé représenter la justice non ?"},
         { "name": "D.Tektiv", "text": "Parfois il le faut malheureusement, surtout pour des cas extrêmes comme celui-là."},
-        { "name": "{{username}}", "text": "Oui, la vie du prof est peut-être en jeu, c'est étrange qu'il soit venu ici et même s'il n'y est plus on trouvera sûrement des indices. Je pense pouvoir vous aider mais pour ça il faut rejoindre la salle des moniteurs. Une fois opérationnel, j'essaierai de vous guider, en rembobinant les flux vidéo pour vous faire passer sans être repéré."},
+        { "name": "{{username}}", "text": "Oui, la vie du prof est peut-être en jeu, c'est étrange qu'il soit venu ici et même s'il n'y est plus on trouvera sûrement des indices. Je pense pouvoir vous aider. En attaquant le réseau wifi, je devrais pouvoir prendre le contrôle des caméras."},
         { "name": "D.Tektiv", "text": "C'est un très bon plan digne de film."}
     ],
     [
-        { "name": "D.Tektiv", "text": "Grâce à toi j'ai pu explorer plus librement. Je n'ai pas trouvé le professeur mais autre chose."},
+        { "name": "D.Tektiv", "text": "Je suis prêt, dis moi quand je peux y aller."},
+        { "name": "{{username}}", "text": "Deux minutes, j'y suis presque..."}
+    ],
+    [
+        { "name": "{{username}}", "text": "Il semblerait que ce ne soit pas le bon wifi..."}
+    ],
+    [
+        { "name": "{{username}}", "text": "C'est bon, tu peux y aller. Mais tu n'as que 10 secondes, alors fait vite."},
+        { "name": "D.Tektiv", "text": "C'est parti."}
+    ],
+    [
+        { "name": "{{username}}", "text": "Cache toi !"},
+        { "name": "D.Tektiv", "text": "Je suis caché, je vois une salle qui a l'air intéressante. J'irais quand tu me le diras."}
+    ],
+    [
+        { "name": "{{username}}", "text": "Vas-y."},
+        { "name": "D.Tektiv", "text": "Ok, j'y vais."}
+    ],
+    [
+        { "name": "D.Tektiv", "text": "C'est bon, j'ai ce qu'il nous faut, je reviens. Cache la caméra une dernière fois."}
+    ],
+    [
+        { "name": "{{username}}", "text": "C'est bon, tu peux revenir mais dépêche toi."}
+    ],
+    [
+        { "name": "D.Tektiv", "text": "Je suis là. Grâce à toi j'ai pu explorer plus librement. Je n'ai pas trouvé le professeur mais autre chose."},
         { "name": "{{username}}", "text": "Qu'est-ce que c'est ?"},
-        { "name": "D.Tektiv", "text": "Un atelier clandestin, ils fabriquent des documents de tout type, carte d'identité, passeport, ..."},
+        { "name": "D.Tektiv", "text": "J'ai trouvé la carte du professeur et j'ai découvert que cette imprimerie est en fait un atelier clandestin, ils fabriquent des documents de tout type, carte d'identité, passeport, ..."},
         { "name": "{{username}}", "text": "Et vous comptez appeler vos collègues ?"},
         { "name": "D.Tektiv", "text": "....Non, il y a plus urgent."},
         { "name": "{{username}}", "text": "C'est quand même assez grave comme histoire."},

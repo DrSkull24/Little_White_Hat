@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Wifite Fictif</title>
+    <link rel="stylesheet" href="chapter2.css">
+    <link rel="stylesheet" href="../dialogues.css">
+    <script type="module" src="chapter2.js"></script>
+</head>
+<body>
+    <div id="printingHouse" class="scene">
+        <img id="inspector" src="img/inspecteur.png" alt="Inspecteur">
+        
+    </div>
+
+    <div id="wifite" class="scene">
+        <h1>Terminal Wifite Fictif</h1>
+        <div id="terminal">
+            <div class="logo">
+                __        __   _   _  __  ___ <br>
+                |  \\  /\\  /  \\ | | | ||  \\| __| <br>
+                |   \\/  \\/    \\| |_| ||   | _| <br>
+                |_|\\_/\\/\\_/|_|_|\\___/ |_|\\_|___| <br>
+            </div>
+            <div class="output">
+                Bienvenue dans le simulateur Wifite. Tapez 'help' pour voir les commandes disponibles.
+            </div>
+        </div>
+        <form id="commandForm">
+            <span>$ ></span>
+            <input type="text" id="input" autofocus>
+        </form>
+    </div>
+    <div id="webcam" class="scene">
+        <h1>Interface Webcam</h1>
+        <div id="webcam-container">
+            <video id="webcam-video" autoplay loop muted>
+                <source src="webcam.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo.
+            </video>
+            <div id="live-text">En direct</div>
+            <div id="error-message">
+                Un problème est survenu. Cette caméra est momentanément indisponible, veuillez patienter...
+            </div>
+        </div>
+        <button id="hack-button">Hack</button>
+    </div>
+</body>
+</html>

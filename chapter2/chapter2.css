@@ -1,0 +1,124 @@
+body {
+    font-family: monospace;
+    background-color: black;
+    color: limegreen;
+    padding: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+#printingHouse {
+    background-image: url('img/printingHouse.jpeg');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    min-width: 100vw;
+    margin: 0;
+}
+
+#inspector {
+    position: absolute;
+    bottom: 0;
+    width: 50%;
+}
+
+#wifite {
+    display: none;
+}
+
+#terminal {
+    background-color: #111;
+    padding: 20px;
+    border-radius: 5px;
+    height: 400px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+}
+
+#input {
+    background-color: transparent;
+    border: none;
+    color: limegreen;
+    outline: none;
+    width: 80%;
+}
+
+.command {
+    color: cyan;
+}
+
+.output {
+    color: limegreen;
+}
+
+.error {
+    color: red;
+}
+
+.logo {
+    color: limegreen;
+    font-weight: bold;
+}
+
+#webcam {
+    display: none;
+    font-family: monospace;
+    background-color: black;
+    color: limegreen;
+    padding: 20px;
+}
+
+#webcam-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+}
+
+#webcam-video {
+    width: 100%;
+    border: 2px solid limegreen;
+    border-radius: 5px;
+}
+
+#live-text {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: red;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+}
+
+#hack-button {
+    background-color: limegreen;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#hack-button:hover {
+    background-color: green;
+}
+
+#error-message {
+    display: none;
+    background-color: black;
+    color: red;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid red;
+    border-radius: 5px;
+    margin-top: 10px;
+}
