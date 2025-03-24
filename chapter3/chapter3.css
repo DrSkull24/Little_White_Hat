@@ -1,0 +1,22 @@
+body {
+    background-image: url('img/computer.png');
+    opacity: 100%;
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    min-width: 100vw;
+    margin: 0;
+}
+
+#folder {
+    position: absolute;
+    width: 3.5%;
+    height: 10%;
+    top: 3%;
+    left: 1.5%;
+}
+
+#folder:hover {
+    background-color: rgba(128, 128, 128, 0.3);
+}

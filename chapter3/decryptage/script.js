@@ -21,7 +21,6 @@ const SECRET_KEY = "NotteStellata";
 
 const HIDDEN_FILE = "fichiers/affaires_cachees.txt";
 
-// Fonction pour charger et afficher les fichiers
 function loadFiles() {
     const fileListElement = document.getElementById("file-list");
     fileListElement.innerHTML = "";
@@ -40,7 +39,6 @@ function loadFiles() {
     });
 }
 
-// Fonction pour afficher le contenu du fichier avec une limite de caractères par ligne
 function displayFileContent(content) {
     let formattedContent = "";
     let currentLineLength = 0;
@@ -58,19 +56,16 @@ function displayFileContent(content) {
     document.getElementById("file-output").textContent = formattedContent.trim();
 }
 
-// Fonction pour ouvrir la boîte à outils
 function openToolbox() {
     document.getElementById("toolbox-popup").style.display = "block";
 }
 
-// Fonction pour fermer la boîte à outils
 function closeToolbox() {
     document.getElementById("toolbox-popup").style.display = "none";
 }
 
 let activeTool = null;
 
-// Fonction pour ouvrir un outil spécifique
 function openTool(tool) {
     closeTool();
 
@@ -85,7 +80,6 @@ function openTool(tool) {
     }
 }
 
-// Fonction pour fermer l'interface d'un outil
 function closeTool() {
     document.getElementById("search-tool").style.display = "none";
     document.getElementById("decrypt-tool").style.display = "none";
@@ -166,12 +160,10 @@ function decryptFile() {
     }
 }
 
-// Fonction pour accéder au serveur
 function accessServer() {
     alert("Accès au serveur réussi !");
 }
 
-// Fonction pour analyser un fichier avec des animations
 function analyzeFile() {
     const analyzeResultsElement = document.getElementById("analyze-results");
     const progressBar = document.querySelector(".progress-bar .progress");

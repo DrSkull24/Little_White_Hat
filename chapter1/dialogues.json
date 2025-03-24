@@ -22,7 +22,7 @@
         { "name": "D.Tektiv", "text": "J'enquêtais avec le professeur sur de dangereux criminels appartenant à la mafia. Je suppose que c'est eux les responsables. Il n'y a personne ici donc il est sûrement encore en vie. En revanche, je pense qu'il nous reste très peu de temps." }
     ],
     [
-        { "name": "{{username}}", "text": "(Une sonnerie retentit) C'est le téléphone du professeur, pas étonnant qu'il ne répondait pas. C'est un appel de son collègue." },
+        { "name": "{{username}}", "text": "(Une sonnerie retentit) C'est le téléphone du professeur, pas étonnant qu'il ne répondait pas. C'est un numéro inconnu." },
         { "name": "D.Tektiv", "text": "Ça confirme nos peurs. Il faut le retrouver au plus vite." },
         { "name": "{{username}}", "text": "Malheureusement, le téléphone est verrouillé." },
         { "name": "{{username}}", "text": "Je peux tenter quelques mots de passe mais peu de chance que ça marche." },
