@@ -1,4 +1,5 @@
 
+import { setCookie } from "../cookies.js";
 import {loadDialogues, showDialogue} from "../dialogues.js";
 
 let currentScene = 'laboratory';
@@ -71,6 +72,8 @@ function backFromTracking() {
     manageBackButton('none');
     if (printingHouseFound) {
         showDialogue(6);
+        setCookie('Chapter1', 'true', 365);
+        document.getElementById("nextChapter").style.display = "block";
     }
 }
 
@@ -116,5 +119,6 @@ function startTracking() {
 
 document.getElementById("phoneNotification").addEventListener("click", track);
 document.getElementById("trackButton").addEventListener("click", startTracking);
+document.getElementById("nextChapter").addEventListener("click", () => window.location.href = "../chapter2/chapter2.html");
 
 loadDialogues(goToHouseEntrance);

@@ -1,3 +1,4 @@
+import { setCookie } from '../cookies.js';
 import { loadDialogues, showDialogue } from '../dialogues.js';
 
 let currentScene = 'printingHouse';
@@ -102,6 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     form.addEventListener("submit", handleCommand);
     document.getElementById("hack-button").addEventListener("click", hackWebcam);
+    document.getElementById("nextChapter").addEventListener("click", () => window.location.href = "../chapter3/chapter3.html");
 });
 
 function changeScene(sceneId) {
@@ -135,7 +137,11 @@ function hackWebcam() {
         document.getElementById('live-text').style.display = 'block';
         document.getElementById('error-message').style.display = 'none';
         document.getElementById('hack-button').style.display = 'block';
-        if (camHackDialogueIndex === 8) goToPrintingHouse();
+        if (camHackDialogueIndex === 8) {
+            goToPrintingHouse();
+            setCookie("Chapter2", "true", 365);
+            document.getElementById('nextChapter').style.display = 'block';
+        }
         showDialogue(camHackDialogueIndex++);
     }, 10000);
 }

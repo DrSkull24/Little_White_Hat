@@ -122,3 +122,20 @@ body {
     border-radius: 5px;
     margin-top: 10px;
 }
+
+#nextChapter {
+    position: absolute;
+    background-color: blue;
+    padding: 10px 20px;
+    border: solid 2px rgb(0, 100, 0);
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    font-size: 26px;
+    display: inline-block;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}

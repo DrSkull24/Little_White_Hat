@@ -4,8 +4,8 @@ function selectChapter() {
     let settingsDiv = document.getElementById("settingsDiv")
     if (settingsDiv) settingsDiv.style.display = "none";
 
-    const chapters = ["Prologue", "Chapitre 1", "Chapitre 2"];
-    const chaptersLinks = ["prologue/prologue.html", "chapter1/chapter1.html", "chapter2/chapter2.html"];
+    const chapters = ["Prologue", "Chapter1", "Chapter2", "Chapter3", "Chapter4", "Chapter5"];
+    const chaptersLinks = ["prologue/prologue.html", "chapter1/chapter1.html", "chapter2/chapter2.html", "chapter3/chapter3.html", "chapter4/chapter4.html", "chapter5/chapter5.html"];
     const chapterSelectionDiv = document.getElementById("chapterSelectionDiv");
 
     let unlocked = true;
