@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulateur de Téléphone</title>
+    <link rel="stylesheet" href="smartphone copy.css">
+    <link rel="stylesheet" href="messages.css">
+    <link rel="stylesheet" href="gallery.css">
+    <link rel="stylesheet" href="files.css">
+    <link rel="stylesheet" href="calendar.css">
+    <script defer src="apps/messages.js"></script>
+    <script defer src="apps/gallery.js"></script>
+    <script defer src="apps/files.js"></script>
+    <script defer src="apps/calendar.js"></script>
+
+
+</head>
+<body>
+    <div class="phone">
+        <link rel="stylesheet" href="smartphone copy.css">
+        <div class="screen" id="screen">
+            <div class="page">
+                <div class="app">📞<span>Téléphone</span></div>
+                <div class="app" onclick="MessagesApp.open()">💬<span>Messages</span></div>
+                <div class="app">📇<span>Contacts</span></div>
+                <div class="app" onclick="GalleryApp.open()">🖼️<span>Galerie</span></div>
+                <div class="app" onclick="FilesApp.open()">📁<span>Fichiers</span></div>
+            </div>
+            <div class="page">
+                <div class="app">⚙️<span>Réglages</span></div>
+                <div class="app" onclick="CalendarApp.open()">📅<span>Calendrier</span></div>
+            </div>
+        </div>
+        <div class="navigation">
+            <div class="dot active" id="dot1"></div>
+            <div class="dot" id="dot2"></div>
+        </div>
+
+        <div id="modals">
+            <div class="modal" id="messages-screen">
+                <link rel="stylesheet" href="messages.css">
+                <div class="header">Messages</div>
+                <div class="contacts">
+                    <div class="contact" onclick="MessagesApp.openChat('Laeticia')">Laeticia</div>
+                    <div class="contact" onclick="MessagesApp.openChat('Bob')">Bob</div>
+                    <div class="contact" onclick="MessagesApp.openChat('Amori')">Amori</div>
+                </div>
+                <div class="back" onclick="MessagesApp.close()"></div>
+            </div>
+            <div class="chat-screen" id="chat-screen">
+                <div class="chat-header" id="chat-header">Chat</div>
+                <div class="messages" id="chat-messages"></div>
+                <div class="back" onclick="MessagesApp.closeChat()"></div>
+            </div>
+
+            <div class="modal" id="gallery-modal">
+                <link rel="stylesheet" href="gallery.css">
+                <span class="close" onclick="GalleryApp.close()">&times;</span>
+                <h3>Galerie</h3>
+                <div class="gallery-grid">
+                
+                </div>
+
+                <div class="photo-modal">
+                    <span class="close-modal">&times;</span>
+                    <img src="" alt="Photo agrandie" class="modal-image">
+                    <button class="details-btn">Détails</button>
+                    <div class="photo-details"></div>
+                </div>
+            </div>
+
+            <div class="fullscreen-view" id="fullscreen-view">
+                <span class="close-btn" onclick="GalleryApp.closeFullscreen()">&times;</span>
+                <img id="fullscreen-img" src="" alt="Image en grand">
+            </div>
+
+            <div class="modal" id="files-modal">
+                <span class="close" onclick="FilesApp.close()">&times;</span>
+                <h3>Fichiers</h3>
+                <div id="file-list">
+                    <p onclick="FilesApp.openFile('Allergènes dans nos pizzas', 'Reine : Gluten\nLait,\nRoyale : Gluten, Lait\nChèvre-miel : Gluten, Lait\nChicken : Gluten, Lait, Fruits à coques\nLombarde : Gluten, Lait\nSpéciale : Gluten, Lait\n4 Saisons : Gluten, Lait\nMontagnarde : Gluten, Lait\nFlamenkueche : Gluten, Lait\nBurrata : Gluten, Lait\nNovarre : Gluten, Lait, Fruits à coques\nChapelaine : Gluten, Lait\nMargharita BUFALA : Gluten, Lait\nCaprine : Gluten, Lait\n4 Fromages : Gluten, Lait\nRoquefort : Gluten, Lait\nBretonne : Gluten, Lait\nCoppa : Gluten, Lait\nThon : Gluten, Poissons, Lait\nSaumon : Gluten, Poissons, Lait')">
+                        Allergènes dans nos pizzas.txt
+                    </p>
+                    
+                    <p onclick="FilesApp.openFile('Notes', 'Voici quelques notes importantes.')">Notes.txt</p>
+                </div>
+                <div id="file-viewer" style="display: none;">
+                    <h4 id="file-title"></h4>
+                    <div id="file-content"></div>
+                    <div class="back" onclick="FilesApp.backToFiles()">Retour</div>
+                </div>
+            </div>
+
+            <div class="modal" id="calendar-modal">
+                <span class="close" onclick="CalendarApp.close()">&times;</span>
+                <h3 id="calendar-title">Calendrier - Avril 2024</h3>
+                
+                <div class="calendar-header">
+                    <button onclick="CalendarApp.prevMonth()">◀</button>
+                    <span id="month-year">Avril 2024</span>
+                    <button onclick="CalendarApp.nextMonth()">▶</button>
+                </div>
+            
+                <div class="calendar-grid">
+                    <div class="day-name">Lun</div>
+                    <div class="day-name">Mar</div>
+                    <div class="day-name">Mer</div>
+                    <div class="day-name">Jeu</div>
+                    <div class="day-name">Ven</div>
+                    <div class="day-name">Sam</div>
+                    <div class="day-name">Dim</div>
+                </div>
+            
+                <div id="calendar-days" class="calendar-grid"></div>
+            
+                <div id="event-details" class="event-details"></div>
+    
+                <div class="modal" id="event-modal">
+                    <span class="close" onclick="CalendarApp.closeEvent()">&times;</span>
+                    <h3 id="event-title">Détail de l'événement</h3>
+                    <p id="event-description"></p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+    
+
+    <script>
+        const MainApp = {
+            screen: document.getElementById("screen"),
+            dots: [document.getElementById("dot1"), document.getElementById("dot2")],
+            currentPage: 0,
+
+            init: function() {
+                document.addEventListener("keydown", this.handleKeyNavigation.bind(this));
+            },
+
+            handleKeyNavigation: function(event) {
+                if (event.key === "ArrowRight" && this.currentPage === 0) {
+                    this.currentPage = 1;
+                } else if (event.key === "ArrowLeft" && this.currentPage === 1) {
+                    this.currentPage = 0;
+                }
+                this.updateScreen();
+            },
+
+            updateScreen: function() {
+                this.screen.style.transform = `translateX(${-this.currentPage * 50}%)`;
+                this.dots[0].classList.toggle("active", this.currentPage === 0);
+                this.dots[1].classList.toggle("active", this.currentPage === 1);
+            }
+        };
+
+        document.addEventListener("DOMContentLoaded", () => {
+            MainApp.init();
+        });
+        
+    </script>
+</body>
+
+</html>
