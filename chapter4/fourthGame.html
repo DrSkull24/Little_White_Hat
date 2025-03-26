@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tribunal Ace Attorney</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: url('warehouse.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+        #game-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            width: 100%;
+            position: relative;
+        }
+        #character {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            max-height: 90%;
+            width: auto;
+        }
+        #inventaire-container {
+            display: none;
+            background-color: rgba(34, 34, 34, 0.9);
+            border: 2px solid #FFD700;
+            border-radius: 5px;
+            text-align: left;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            padding: 10px;
+        }
+        #inventaire {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .preuve {
+            cursor: pointer;
+            text-align: center;
+        }
+        .preuve img {
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+            border: 2px solid #FFD700;
+        }
+        #preuve-details {
+            display: none;
+            background-color: rgba(34, 34, 34, 0.9);
+            border: 2px solid #FFD700;
+            border-radius: 5px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            padding: 10px;
+        }
+        #preuve-image {
+            width: 150px;
+            height: 150px;
+        }
+        #close-preuve {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            color: white;
+            background: none;
+            border: none;
+        }
+        #close-invent {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            color: white;
+            background: none;
+            border: none;
+        }
+        #dialogue-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: rgba(34, 34, 34, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #FFD700;
+            width: 90%;
+            margin: auto;
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        #dialogue {
+            padding: 20px;
+            flex-grow: 1;
+            text-align: center;
+        }
+        #actions {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        button {
+            margin: 5px;
+            padding: 10px 15px;
+            background-color: #FFD700;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #E6C200;
+        }
+        .temoignage { color: #00FF00; } 
+        .attaque { color: #00BFFF; } 
+        .reponse { color: white; } 
+
+</style>
+</head>
+<body>
+    <div id="game-container">
+        <h1>Tribunal - Ace Attorney</h1>
+        <img id="character" src="deliverer.png" alt="Personnage">
+        <div id="dialogue-container">
+            <button id="prev-btn" onclick="precedentDialogue()">⬅</button>
+            <div id="dialogue">"Bien, dites-nous, qu'avez-vous fait entre hier soir et ce matin ?"</div>
+            <button id="next-btn" onclick="suivantDialogue()">➡</button>
+        </div>
+        <div id="actions">
+            <button onclick="attaquer()">Questionner</button>
+            <button onclick="toggleInventaire()">Afficher/masquer Inventaire</button>
+        </div>
+        <div id="inventaire-container">
+            <button id="close-invent" onclick="fermerInventaire()">✖</button>
+            <h3>Inventaire des Preuves</h3>
+            <div id="inventaire"></div>
+        </div>
+        <div id="preuve-details" style="display: none;">
+            <button id="close-preuve" onclick="fermerPreuve()">✖</button>
+            <img id="preuve-image" src="" alt="Image de la preuve">
+            <h3 id="preuve-nom"></h3>
+            <p id="preuve-description"></p>
+            <button id="preuve-presenter" onclick="presenterPreuve()">Présenter</button>
+        </div>
+        
+    </div>
+    
+    <script>
+        let dialogue = document.getElementById("dialogue");
+        let inventaireDiv = document.getElementById("inventaire-container");
+        let inventaire = document.getElementById("inventaire");
+        let preuveDetails = document.getElementById("preuve-details");
+        let preuveImage = document.getElementById("preuve-image");
+        let preuveNom = document.getElementById("preuve-nom");
+        let preuveDescription = document.getElementById("preuve-description");
+
+        let preuves = {
+            "Image sombre": { description: "Une photo prise hier. Ses métadonnées indiquent des coordonnées géographiques similaires à celles de l'appartement du professeur .", image: "galerie.png" },
+            "Agenda du 15 Avril": { description: "Une photo du suspect près du lieu du crime.", image: "quinze.png" },
+            "Discussion avec Bob": { description: "Indique l'heure exacte du décès.", image: "bavarder.png" }
+        };
+
+        let dialogueIndex = 0;
+        let partieIndex = 0;
+
+        let interrogatoire = [
+            {
+                question: "Bien, dites-nous, qu'avez-vous fait entre hier soir et ce matin ?",
+                temoignages: [
+                    {
+                        texte: "Hier soir, j'ai enchaîné les livraisons.",
+                        attaque: "Quelles livraisons ?",
+                        reponse: "Bah, des livraisons de pizzas, quelle question."
+                    },
+                    {
+                        texte: "Il y avait une promotion ce jour, une achetée, une offerte, donc les commandes pleuvaient.",
+                        attaque: "Combien de clients avez-vous livré ?",
+                        reponse: "Au moins une trentaine en l'espace de deux heures.",
+                        preuve: "Image sombre",
+                        actions: [
+                            "Avez-vous livré à cet homme ?",
+                            "Non, il ne me dit rien.",
+                            "Vous êtes sûr ?",
+                            "C'est pas facile de reconnaître les visages des gens, surtout quand on en voit plein en une soirée, mais je ne pense pas l'avoir vu.",
+                            "Et je n'ai pas livré chez votre personne ce soir-là."
+                        ]
+                    },
+                    {
+                        texte: "Ensuite, après avoir fini, j'ai dû partir directement au musée et le matin, je suis rentré et je n'ai fait que dormir.",
+                        attaque: "Au musée ?",
+                        reponse: "Un jour sur deux, je suis veilleur au musée Renouet, celui du centre-ville. Donc à 22h, j'ai dû partir."
+                    }
+                ]
+            }
+        ];
+
+        function ajouterNouveauTemoignage(nouveauTexte) {
+            let partie = interrogatoire[partieIndex];
+            let nouveauTemoignage = {
+                texte: nouveauTexte,
+                attaque: "Êtes-vous certain ?",
+                reponse: "Oui, j'en suis sûr, je n'ai pas livré à cette adresse.",
+                preuve: "Image sombre",
+                actions: [
+                    "Voici une preuve qui indique que vous étiez bien à cet endroit.",
+                    "Comment est-ce possible ? Je ne comprends pas...",
+                    "Il va falloir nous donner plus d'explications."
+                ]
+            };
+            partie.temoignages.push(nouveauTemoignage);
+        }
+
+
+        function afficherDialogue() {
+            let partie = interrogatoire[partieIndex];
+            dialogue.innerText = partie.temoignages[dialogueIndex].texte;
+        }
+
+
+        let dialogueIndexTemp = null; 
+
+        function precedentDialogue() {
+            let partie = interrogatoire[partieIndex];
+            if (dialogue.dataset.mode === "reponse") {
+                dialogue.innerHTML = `<span class="attaque">${partie.temoignages[dialogueIndexTemp].attaque}</span>`;
+                dialogue.dataset.mode = "attaque";
+            }
+
+            else if (dialogue.dataset.mode === "attaque") {
+                dialogue.dataset.mode = ""; 
+                dialogueIndex = dialogueIndexTemp; 
+                dialogueIndexTemp = null;
+                precedentDialogue();
+            }
+            else if (dialogueIndex > 0) {
+                dialogueIndex--;
+                dialogue.innerHTML = `<span class="temoignage">${partie.temoignages[dialogueIndex].texte}</span>`;
+            }
+        }
+
+
+        function suivantDialogue() {
+            let partie = interrogatoire[partieIndex];
+            if (dialogue.dataset.mode === "attaque") {
+                dialogue.innerHTML = `<span class="reponse">${partie.temoignages[dialogueIndexTemp].reponse}</span>`;
+                dialogue.dataset.mode = "reponse";
+            }
+            else if (dialogue.dataset.mode === "reponse") {
+                dialogue.dataset.mode = ""; 
+                dialogueIndex = dialogueIndexTemp; 
+                dialogueIndexTemp = null; 
+                suivantDialogue();
+            }
+            else if (dialogueIndex < partie.temoignages.length - 1) {
+                dialogueIndex++;
+                dialogue.innerHTML = `<span class="temoignage">${partie.temoignages[dialogueIndex].texte}</span>`;
+            }
+        }
+
+
+        function attaquer() {
+            let partie = interrogatoire[partieIndex];
+            let temoignage = partie.temoignages[dialogueIndex];
+
+            if (temoignage.attaque) {
+                dialogue.innerHTML = `<span class="attaque">${temoignage.attaque}</span>`;
+                dialogue.dataset.mode = "attaque";
+                dialogueIndexTemp = dialogueIndex; 
+            }
+        }
+
+
+
+
+        afficherDialogue();
+
+        function toggleInventaire() {
+            let inventaireDiv = document.getElementById("inventaire-container");
+            if (inventaireDiv.style.display === "" || inventaireDiv.style.display === "none") {
+                inventaireDiv.style.display = "block";
+            } else {
+                inventaireDiv.style.display = "none";
+            }
+
+            afficherInventaire();
+        }
+
+        function afficherInventaire() {
+            let inventaire = document.getElementById("inventaire");
+            inventaire.innerHTML = "";
+            Object.keys(preuves).forEach(nomPreuve => {
+                let preuve = preuves[nomPreuve];
+                let div = document.createElement("div");
+                div.className = "preuve";
+                div.innerHTML = `<img src="${preuve.image}" alt="${nomPreuve}"><br>${nomPreuve}`;
+                div.onclick = () => afficherDetailsPreuve(nomPreuve);
+                inventaire.appendChild(div);
+            });
+        }
+
+
+        function afficherDetailsPreuve(nomPreuve) {
+            let preuve = preuves[nomPreuve];
+            let preuveDetails = document.getElementById("preuve-details");
+            let preuveImage = document.getElementById("preuve-image");
+            let preuveNom = document.getElementById("preuve-nom");
+            let preuveDescription = document.getElementById("preuve-description");
+            let preuveBouton = document.getElementById("preuve-presenter");
+
+            preuveImage.src = preuve.image;
+            preuveNom.innerText = nomPreuve;
+            preuveDescription.innerText = preuve.description;
+            preuveSelectionnee = nomPreuve;
+            preuveDetails.style.display = "block";
+        }
+
+        function presenterPreuve() {
+            fermerInventaire();
+            if (preuveSelectionnee) {
+                let temoignage = interrogatoire[partieIndex].temoignages[dialogueIndex];
+                fermerPreuve(); 
+
+                if (temoignage.preuve === preuveSelectionnee) {
+                    setTimeout(() => {
+                        temoignage.actions.forEach((action, index) => {
+                            setTimeout(() => {
+                                dialogue.innerText = action;
+                                if (index === temoignage.actions.length - 1) {
+                                    ajouterNouveauTemoignage("Et je n'ai pas livré chez votre personne ce soir-là.");
+                                }
+                            }, index * 2000);
+                        });
+                    }, 2000);
+                } else {
+                    dialogue.innerText = "Cette preuve n'a aucun lien avec cette déclaration.";
+                    setTimeout(() => {
+                        suivantDialogue();
+                    }, 2000); 
+                }
+            }
+        }
+
+
+
+        function fermerPreuve() {
+            preuveDetails.style.display = "none";
+        }
+
+        function fermerInventaire() {
+            inventaireDiv.style.display = "none";
+        }
+        
+        afficherInventaire();
+    </script>
+</body>
+</html>
+
+
