@@ -1,8 +1,6 @@
-// ====================
-// 🔹 MESSAGERIE SECRÈTE
-// ====================
+import { setCookie } from "../../../cookies.js";
+import { loadDialogues } from "../../../dialogues.js";
 
-// Données des utilisateurs et conversations
 const conversations = {
     utilisateurs: [
         {
@@ -59,33 +57,26 @@ const conversations = {
     ],
 };
 
-// Variable pour vérifier si l'utilisateur est connecté
-let utilisateurConnecte = false;
-
-// Variable pour stocker l'utilisateur actuellement sélectionné
 let utilisateurSelectionne = null;
 
-// Coordonnées GPS de l'entrepôt
 const entrepotCoordinates = {
     latitude: "48.8606",
     longitude: "2.3376"
 };
 
-// Fonction pour gérer la connexion
 function seConnecter() {
     const identifiant = document.getElementById("identifiant").value;
     const motDePasse = document.getElementById("mot-de-passe").value;
 
     if (identifiant === "Bianco" && motDePasse === "Poppy") {
-        utilisateurConnecte = true;
         afficherNotification("Connexion réussie.");
+        sessionStorage.setItem("connected", "true");
         mettreAJourBoutonEnvoi();
     } else {
         afficherNotification("Identifiant ou mot de passe incorrect.");
     }
 }
 
-// Fonction pour afficher une notification en bas à droite
 function afficherNotification(message) {
     const notification = document.createElement("div");
     notification.className = "notification";
@@ -97,57 +88,49 @@ function afficherNotification(message) {
     }, 3000);
 }
 
-// Fonction pour mettre à jour le bouton d'envoi de message
 function mettreAJourBoutonEnvoi() {
     const boutonEnvoyer = document.getElementById("bouton-envoyer-message");
 
-    if (utilisateurSelectionne && utilisateurConnecte) {
+    if (utilisateurSelectionne && sessionStorage.getItem("connected") === "true") {
         boutonEnvoyer.textContent = "Envoyer un message";
         boutonEnvoyer.disabled = false;
-        boutonEnvoyer.style.backgroundColor = "#007bff"; // Couleur active
-        boutonEnvoyer.style.color = "white"; // Couleur du texte active
+        boutonEnvoyer.style.backgroundColor = "#007bff"; 
+        boutonEnvoyer.style.color = "white";
     } else {
         boutonEnvoyer.textContent = "Sélectionnez un utilisateur et connectez-vous";
         boutonEnvoyer.disabled = true;
-        boutonEnvoyer.style.backgroundColor = "#ccc"; // Couleur désactivée
-        boutonEnvoyer.style.color = "#666"; // Couleur du texte grisé
+        boutonEnvoyer.style.backgroundColor = "#ccc";
+        boutonEnvoyer.style.color = "#666"; 
     }
 }
 
-// Fonction pour afficher une bulle de message temporaire
 function afficherBulle(message) {
     const bulle = document.getElementById("bulle-message");
     const bulleTexte = document.getElementById("bulle-texte");
     bulleTexte.textContent = message;
     bulle.style.display = "block";
 
-    // Masquer la bulle après 2 secondes
     setTimeout(() => {
         bulle.style.display = "none";
     }, 2000);
 }
 
-// Fonction pour enregistrer une image lorsqu'on clique dessus
 function enregistrerImage(image) {
-    // Stocker l'image dans le localStorage
-    localStorage.setItem("derniereImageEnregistree", JSON.stringify(image));
+    if (sessionStorage.getItem("derniereImageEnregistree") === null) loadDialogues(null, 7, "../../dialogues.json");
+    sessionStorage.setItem("derniereImageEnregistree", JSON.stringify(image));
     console.log("Image enregistrée :", image);
 
-    // Afficher une notification de confirmation
     afficherNotification("Image enregistrée");
 }
 
-// Fonction pour afficher la conversation d'un utilisateur
 function afficherConversation(utilisateurId) {
     utilisateurSelectionne = conversations.utilisateurs.find((u) => u.id === utilisateurId);
     const messagesDiv = document.getElementById("messages");
     const nomUtilisateur = document.getElementById("nom-utilisateur");
 
-    // Affiche le nom de l'utilisateur
     nomUtilisateur.textContent = `Conversation avec ${utilisateurSelectionne.nom}`;
 
-    // Affiche les messages
-    messagesDiv.innerHTML = ""; // Vide les messages précédents
+    messagesDiv.innerHTML = ""; 
     utilisateurSelectionne.messages.forEach((message) => {
         if (message.type === "texte") {
             const p = document.createElement("p");
@@ -157,14 +140,12 @@ function afficherConversation(utilisateurId) {
             const imgContainer = document.createElement("div");
             imgContainer.className = "message-image-container";
 
-            // Afficher l'image avec le nom de l'expéditeur
             const img = document.createElement("img");
             img.src = message.contenu;
             img.className = "message-image";
-            img.addEventListener("click", () => enregistrerImage(message)); // Enregistrer l'image au clic
+            img.addEventListener("click", () => enregistrerImage(message));
             imgContainer.appendChild(img);
 
-            // Afficher le nom de l'expéditeur
             const expediteur = document.createElement("p");
             expediteur.textContent = `Envoyé par ${message.auteur}`;
             expediteur.style.fontSize = "0.9em";
@@ -175,11 +156,9 @@ function afficherConversation(utilisateurId) {
         }
     });
 
-    // Met à jour le bouton d'envoi de message
     mettreAJourBoutonEnvoi();
 }
 
-// Fonction pour afficher une popup
 function afficherPopup(message) {
     const popup = document.createElement("div");
     popup.id = "popup";
@@ -194,12 +173,12 @@ function afficherPopup(message) {
     popup.style.zIndex = "1000";
     popup.innerHTML = `
         <p>${message}</p>
-        <button onclick="fermerPopup()">Fermer</button>
+        <button">Fermer</button>
     `;
     document.body.appendChild(popup);
+    popup.addEventListener("click", fermerPopup);
 }
 
-// Fonction pour fermer la popup
 function fermerPopup() {
     const popup = document.getElementById("popup");
     if (popup) {
@@ -207,22 +186,19 @@ function fermerPopup() {
     }
 }
 
-// Fonction pour envoyer l'image à un utilisateur
 function envoyerImageAUtilisateur() {
-    if (!utilisateurConnecte) {
+    if (sessionStorage.getItem("connected") !== "true") {
         afficherNotification("Vous devez être connecté pour envoyer une image.");
         return;
     }
 
-    const chevalImage = JSON.parse(localStorage.getItem("chevalImage"));
+    const chevalImage = JSON.parse(sessionStorage.getItem("chevalImage"));
 
-    // Vérifier si l'utilisateur sélectionné est Giallo
     if (utilisateurSelectionne.nom !== "Giallo") {
         afficherNotification("Destinataire non pertinent. Veuillez sélectionner Giallo.");
         return;
     }
 
-    // Vérifier si les coordonnées GPS correspondent à celles de l'entrepôt
     const imageLatitude = chevalImage.metadata?.GPS?.Latitude;
     const imageLongitude = chevalImage.metadata?.GPS?.Longitude;
 
@@ -232,11 +208,10 @@ function envoyerImageAUtilisateur() {
     }
 
     if (imageLatitude !== entrepotCoordinates.latitude || imageLongitude !== entrepotCoordinates.longitude) {
-        afficherNotification("Les coordonnées GPS de cheval.jpg ne correspondent pas à celles de l'entrepôt.");
+        loadDialogues(null, 11, "../../dialogues.json");
         return;
     }
 
-    // Simuler l'envoi de l'image et du message texte à Giallo
     const messageImage = {
         type: "image",
         contenu: "../images/cheval.jpg",
@@ -250,65 +225,66 @@ function envoyerImageAUtilisateur() {
         auteur: "Bianco"
     };
 
-    // Ajouter les messages à la conversation de Giallo
     const gialloConversation = conversations.utilisateurs.find(u => u.nom === "Giallo");
     if (gialloConversation) {
         gialloConversation.messages.push(messageImage);
         gialloConversation.messages.push(messageTexte);
         afficherNotification("Image et message envoyés à Giallo avec succès.");
-        afficherConversation(gialloConversation.id); // Rafraîchir l'affichage de la conversation
-        afficherPopup("FIN"); // Afficher la popup après l'envoi des messages
+        afficherConversation(gialloConversation.id); 
+        loadDialogues(null, 12, "../../dialogues.json");
+        document.getElementById("nextChapter").style.display = "block";
     } else {
         afficherNotification("Erreur : Conversation de Giallo introuvable.");
     }
 }
 
-// Affiche la liste des utilisateurs
 function afficherUtilisateurs() {
     const listeUtilisateurs = document.getElementById("liste-utilisateurs");
-    listeUtilisateurs.innerHTML = ""; // Vide la liste
+    listeUtilisateurs.innerHTML = ""; 
 
     conversations.utilisateurs.forEach((utilisateur) => {
         const li = document.createElement("li");
         li.textContent = utilisateur.nom;
         li.addEventListener("click", () => {
             afficherConversation(utilisateur.id);
-            mettreAJourBoutonEnvoi(); // Mettre à jour le bouton après la sélection de l'utilisateur
+            mettreAJourBoutonEnvoi(); 
         });
         listeUtilisateurs.appendChild(li);
     });
 }
 
-// Initialisation de la messagerie
 document.addEventListener("DOMContentLoaded", () => {
-    if (window.location.pathname.endsWith("messagerie.html")) {
-        afficherUtilisateurs();
-
-        // Ajouter un popup personnalisé
-        const popup = document.createElement("div");
-        popup.id = "popup";
-        popup.style.display = "none";
-        popup.style.position = "fixed";
-        popup.style.top = "50%";
-        popup.style.left = "50%";
-        popup.style.transform = "translate(-50%, -50%)";
-        popup.style.backgroundColor = "white";
-        popup.style.padding = "20px";
-        popup.style.border = "1px solid #ccc";
-        popup.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.1)";
-        popup.style.zIndex = "1000";
-        popup.innerHTML = `
-            <p id="popup-message"></p>
-            <button onclick="fermerPopup()">Fermer</button>
-        `;
-        document.body.appendChild(popup);
-
-        // Ajouter l'événement pour le bouton d'envoi de message
-        const boutonEnvoyer = document.getElementById("bouton-envoyer-message");
-        boutonEnvoyer.addEventListener("click", envoyerImageAUtilisateur);
-
-        // Ajouter l'événement pour le bouton d'envoi d'image
-        const boutonEnvoyerImage = document.getElementById("bouton-envoyer-image");
-        boutonEnvoyerImage.addEventListener("click", envoyerImageAUtilisateur);
+    afficherUtilisateurs();
+    mettreAJourBoutonEnvoi();
+    if (sessionStorage.getItem("connected") === "true") {
+        document.getElementById("identifiant").value = "Bianco";
+        document.getElementById("mot-de-passe").value = "Poppy";
     }
+
+    const popup = document.createElement("div");
+    popup.id = "popup";
+    popup.style.display = "none";
+    popup.style.position = "fixed";
+    popup.style.top = "50%";
+    popup.style.left = "50%";
+    popup.style.transform = "translate(-50%, -50%)";
+    popup.style.backgroundColor = "white";
+    popup.style.padding = "20px";
+    popup.style.border = "1px solid #ccc";
+    popup.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.1)";
+    popup.style.zIndex = "1000";
+    popup.innerHTML = `
+        <p id="popup-message"></p>
+        <button>Fermer</button>
+    `;
+    document.body.appendChild(popup);
+    popup.addEventListener("click", fermerPopup);
+
+    document.getElementById("bouton-envoyer-message").addEventListener("click", envoyerImageAUtilisateur);
+    document.getElementById("connect").addEventListener("click", seConnecter);
+    document.getElementById("nextChapter").addEventListener("click", () => {
+        sessionStorage.clear();
+        setCookie("chapter3", "completed", 365);
+        window.location.href = "../../../chapter4/chapter4.html";
+    });
 });

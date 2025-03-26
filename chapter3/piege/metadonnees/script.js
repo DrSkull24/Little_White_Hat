@@ -1,13 +1,9 @@
-// ====================
-// 🔹 LIRE LES MÉTADONNÉES
-// ====================
+import { loadDialogues } from "../../../dialogues.js";
 
 document.getElementById("afficher-metadata").addEventListener("click", afficherMetadata);
 document.getElementById("ajouter-coordonnees").addEventListener("click", addGPSMetadata);
 
-// Vérifier si l'image cheval.jpg est déjà stockée dans le localStorage
-if (!localStorage.getItem("chevalImage")) {
-    // Créer l'image cheval.jpg avec des métadonnées par défaut
+if (!sessionStorage.getItem("chevalImage")) {
     const chevalImage = {
         contenu: "../images/cheval.jpg",
         metadata: {
@@ -19,20 +15,22 @@ if (!localStorage.getItem("chevalImage")) {
             }
         }
     };
-    localStorage.setItem("chevalImage", JSON.stringify(chevalImage));
-    localStorage.setItem("derniereImageEnregistree", JSON.stringify(chevalImage));
+    sessionStorage.setItem("chevalImage", JSON.stringify(chevalImage));
+    sessionStorage.setItem("derniereImageEnregistree", JSON.stringify(chevalImage));
 }
 
 function afficherMetadata() {
-    // Récupérer l'image enregistrée depuis le localStorage
-    const derniereImageEnregistree = JSON.parse(localStorage.getItem("derniereImageEnregistree"));
+    if (sessionStorage.getItem("metadata") === null) {
+        loadDialogues(null, 8, "../../dialogues.json");
+        sessionStorage.setItem("metadata", "true");
+    }
+    const derniereImageEnregistree = JSON.parse(sessionStorage.getItem("derniereImageEnregistree"));
 
     if (!derniereImageEnregistree) {
         afficherNotification("Aucune image enregistrée.");
         return;
     }
 
-    // Récupérer les métadonnées de l'image
     const metadata = derniereImageEnregistree.metadata || {
         GPS: {
             Latitude: "48.8566",
@@ -40,17 +38,12 @@ function afficherMetadata() {
         }
     };
 
-    // Afficher le nom de l'image et les métadonnées
     let metadataOutput = `📄 Nom de l'image : ${derniereImageEnregistree.contenu}<br>📄 Métadonnées :<br>`;
     for (const tag in metadata) {
         metadataOutput += `<strong>${tag}:</strong> ${JSON.stringify(metadata[tag])}<br>`;
     }
     document.getElementById("metaResult").innerHTML = metadataOutput;
 }
-
-// ====================
-// 🔹 AJOUTER DES COORDONNÉES GPS À CHEVAL.JPG
-// ====================
 
 function addGPSMetadata() {
     const latitude = document.getElementById("latitude").value;
@@ -61,7 +54,7 @@ function addGPSMetadata() {
         return;
     }
 
-    const chevalImage = JSON.parse(localStorage.getItem("chevalImage"));
+    const chevalImage = JSON.parse(sessionStorage.getItem("chevalImage"));
 
     if (!chevalImage) {
         afficherNotification("Aucune image cheval.jpg enregistrée.");
@@ -78,14 +71,17 @@ function addGPSMetadata() {
     };
 
     chevalImage.metadata = metadata;
-    localStorage.setItem("chevalImage", JSON.stringify(chevalImage));
+    sessionStorage.setItem("chevalImage", JSON.stringify(chevalImage));
 
     afficherNotification("Coordonnées GPS ajoutées avec succès à cheval.jpg.");
     afficherMetadataCheval();
+    if (sessionStorage.getItem("connected") === null) {
+        loadDialogues(null, 10, "../../dialogues.json");
+    }
 }
 
 function afficherMetadataCheval() {
-    const chevalImage = JSON.parse(localStorage.getItem("chevalImage"));
+    const chevalImage = JSON.parse(sessionStorage.getItem("chevalImage"));
 
     if (!chevalImage) {
         document.getElementById("chevalMetaResult").innerHTML = "Aucune métadonnée pour cheval.jpg.";
@@ -117,5 +113,4 @@ function afficherNotification(message) {
     }, 3000);
 }
 
-// Afficher les métadonnées de cheval.jpg au chargement de la page
 document.addEventListener("DOMContentLoaded", afficherMetadataCheval);

@@ -162,7 +162,7 @@ function decryptFile() {
 }
 
 function accessServer() {
-    window.location.href = "../mafiaserver/index.html";
+    showDialogue(3, () => window.location.href = "../mafiaserver/index.html");
 }
 
 function analyzeFile() {
@@ -190,7 +190,7 @@ function analyzeFile() {
 }
 
 loadFiles();
-loadDialogues();
+setTimeout( () => loadDialogues(null, 2, "../dialogues.json"), 500);
 
 document.getElementById("toolbox-icon").addEventListener("click", () => openToolbox());
 document.getElementById("toolbox-close-btn").addEventListener("click", () => closeToolbox());

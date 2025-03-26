@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Serveur Mafia - Logs & Outils</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../../../dialogues.css">
+    <script src="script.js" type="module"></script>
 </head>
 <body>
     <div class="container">
@@ -15,10 +17,8 @@
             </div>
         </div>
 
-        <!-- Bouton pour ouvrir le popup -->
         <button class="toolbox-icon" onclick="openToolbox()">🛠️ Outils</button>
 
-        <!-- Popup de la boîte à outils -->
         <div class="toolbox-popup" id="toolbox-popup">
             <span class="close-btn" onclick="closeToolbox()">❌</span>
             <h2>Outils</h2>
@@ -27,7 +27,6 @@
             </div>
         </div>
 
-        <!-- Interface de localisation MAC -->
         <div class="tool-interface" id="mac-tool">
             <span class="close-btn" onclick="closeTool()">❌</span>
             <h2>Localisation de Routeur Wi-Fi</h2>
@@ -35,13 +34,12 @@
                 <input type="text" id="mac-input" placeholder="Entrez une adresse MAC">
                 <button onclick="lookupMac()">Rechercher</button>
                 <p id="location-result"></p>
-                <p id="gps-coordinates"></p> <!-- Nouveau champ pour afficher les coordonnées GPS -->
+                <p id="gps-coordinates"></p> 
             </div>
         </div>
     </div>
     <div class="footer">
         <a href="../index.html">⬅ Retour</a>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>

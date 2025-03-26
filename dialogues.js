@@ -8,10 +8,16 @@ let dialogueText;
 let speakerName;
 let endDialogueFunction
 let typeWriterEffect;
+let loaded = false;
 
 
-export function loadDialogues(functionToCall = null) {
-    fetch('dialogues.json')
+export function loadDialogues(functionToCall = null, dialogueIndex = 0, file = 'dialogues.json') {
+    if (loaded) {
+        showDialogue(dialogueIndex, functionToCall);
+        return;
+    }
+    loaded = true;
+    fetch(file)
         .then(response => response.json())
         .then(dialoguesJSON => {
             const username = getCookie('username');  
@@ -43,7 +49,7 @@ export function loadDialogues(functionToCall = null) {
             document.getElementById("next-dialogue").addEventListener("click", nextDialogue);
             document.getElementById("skip-dialogues").addEventListener("click", endDialogues);
 
-            showDialogue(0, functionToCall);
+            showDialogue(dialogueIndex, functionToCall);
         }).catch(error => console.error('Erreur lors du chargement des dialogues:', error));
 }
 

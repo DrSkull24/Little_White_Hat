@@ -1,4 +1,5 @@
 import { loadDialogues, showDialogue } from '../dialogues.js';
+import { getCookie, deleteCookie } from '../cookies.js';
 
 function changeScene(sceneId) {
     document.querySelectorAll('.scene').forEach(scene => {
@@ -19,3 +20,4 @@ document.getElementById("folder").addEventListener("dblclick", () => {
     window.location.href = "decryptage/recherche.html";
     showDialogue(2);
 });
+

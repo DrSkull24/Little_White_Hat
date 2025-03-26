@@ -1,4 +1,10 @@
+import { loadDialogues } from "../../../dialogues.js";
+
 document.addEventListener("DOMContentLoaded", function () {
+    if (sessionStorage.getItem("metadata") !== null && sessionStorage.getItem("logs") === null) {
+        loadDialogues(null, 9, "../../dialogues.json");
+        sessionStorage.setItem("logs", "true");
+    }
     fetch("logs.txt")
         .then(response => response.text())
         .then(text => {
@@ -9,10 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function displayLogs(logs) {
     const logContainer = document.getElementById("log-container");
-    logContainer.textContent = logs.join("\n"); // Affiche tous les logs d'un coup
+    logContainer.textContent = logs.join("\n"); 
 }
 
-// Base de données étendue avec les coordonnées GPS
 const macDatabase = {
     "00:14:22:01:23:45": { lieu: "Café", latitude: "48.8566", longitude: "2.3522" },
     "00:16:17:02:34:56": { lieu: "Bureau", latitude: "48.8584", longitude: "2.2945" },
@@ -25,10 +30,8 @@ function lookupMac() {
     const inputMac = document.getElementById("mac-input").value.trim();
     const result = macDatabase[inputMac] || { lieu: "Localisation inconnue", latitude: "N/A", longitude: "N/A" };
 
-    // Afficher le lieu
     document.getElementById("location-result").innerText = "Lieu : " + result.lieu;
 
-    // Afficher les coordonnées GPS
     document.getElementById("gps-coordinates").innerText = 
         `Coordonnées GPS : Latitude ${result.latitude}, Longitude ${result.longitude}`;
 }

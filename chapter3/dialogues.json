@@ -4,5 +4,44 @@
     ],
     [
         { "name": "{{username}}", "text": "C'est toujours le même qu'hier ! Place à la recherche maintenant." }    
+    ],
+    [
+        { "name": "{{username}}", "text": "Je vais vraiment devoir chercher parmi tous ces fichiers ? Le professeur doit bien avoir des outils pour chercher plus vite." }    
+    ],
+    [
+        { "name": "{{username}}", "text": "Il semblerait que le professeur avait accès au serveur de la mafia. Je devrais y jeter un œuil." }
+    ],
+    [
+        { "name": "{{username}}", "text": "Le serveur n'a pas l'air d'être disponible. Peut-être que je pourrais quand même y accéder en utilisant Métasploit..." }    
+    ],
+    [
+        { "name": "{{username}}", "text": "Me voilà enfin sur le serveur de la mafia" }
+    ],
+    [
+        { "name": "{{username}}", "text": "On dirait que j'ai accès aux conversations d'un certain Bianco. Je devrais pouvoir trouver des informations grâce à ça." }
+    ],
+    [
+        { "name": "{{username}}", "text": "L'image a été enregistrée quand j'ai cliqué dessus, je devrais pouvoir en faire quelque chose..." }
+    ],
+    [
+        { "name": "{{username}}", "text": "Oh, donc des coordonnées sont cachées dans les images." },
+        { "name": "D.Tektiv", "text": "Ça me donne un idée, on pourrait essayer de tendre un piège à l'un d'entre eux pour le faire venir où on veut." },
+        { "name": "D.Tektiv", "text": "Il reste encore à savoir où donner rendez-vous et comment se connecter pour envoyer le message." },
+        { "name": "{{username}}", "text": "C'est une bonne idée, je vais essayer de trouver un moyen de les contacter." }
+    ],
+    [
+        { "name": "{{username}}", "text": "Ce sont les logs du serveur, on devrait pouvoir trouver un lieu pour le rendez-vous ici." },
+        { "name": "D.Tektiv", "text": "Il faudrait trouver un endroit tranquille, avec peu de monde." }
+    ],
+    [
+        { "name": "{{username}}", "text": "Maintenant que l'image est prête, on doit trouver un moyen de se connecter pour l'envoyer." }
+    ],
+    [
+        { "name": "D.Tektiv", "text": "Tu es sûr que cette adresse convient ?"},
+        { "name": "{{username}}", "text": "On peut sûrement trouver mieux, je vais regarder ce qu'il y a d'autre dans les logs."}
+    ],
+    [
+        { "name": "{{username}}", "text": "C'est bon, le message est envoyé."},
+        { "name": "D.Tektiv", "text": "Très bien , allons l'attendre à l'entrepôt alors."}
     ]
 ]

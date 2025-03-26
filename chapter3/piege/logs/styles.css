@@ -27,7 +27,7 @@ body {
 }
 
 h1 {
-    color: #ff5555; /* Rouge au lieu de vert */
+    color: #ff5555;
     font-size: 1.5em;
     margin-bottom: 20px;
 }
@@ -44,7 +44,7 @@ h1 {
 }
 
 .toolbox-icon {
-    background-color: #ff5555; /* Rouge au lieu de vert */
+    background-color: #ff5555;
     color: white;
     padding: 10px 20px;
     font-size: 16px;
@@ -55,7 +55,7 @@ h1 {
 }
 
 .toolbox-icon:hover {
-    background-color: #ff3333; /* Rouge plus foncé au survol */
+    background-color: #ff3333;
 }
 
 .toolbox-popup {
@@ -92,11 +92,11 @@ h1 {
     right: 15px;
     font-size: 24px;
     cursor: pointer;
-    color: #ff5555; /* Rouge au lieu de vert */
+    color: #ff5555;
 }
 
 .close-btn:hover {
-    color: #ff7777; /* Rouge plus clair au survol */
+    color: #ff7777;
 }
 
 .tool-container {
@@ -115,7 +115,7 @@ input {
 }
 
 button {
-    background-color: #ff5555; /* Rouge au lieu de vert */
+    background-color: #ff5555;
     color: white;
     padding: 10px;
     font-size: 14px;
@@ -126,16 +126,17 @@ button {
 }
 
 button:hover {
-    background-color: #ff3333; /* Rouge plus foncé au survol */
+    background-color: #ff3333;
 }
 
 #location-result {
     margin-top: 10px;
     font-size: 14px;
-    color: #ff5555; /* Rouge au lieu de vert */
+    color: #ff5555;
 }
 
 a {
+    font-size: large;
     color: #007bff;
     text-decoration: none;
 }
@@ -149,5 +150,5 @@ a {
 #gps-coordinates {
     margin-top: 10px;
     font-size: 14px;
-    color: #ff5555; /* Rouge pour correspondre au thème */
+    color: #ff5555; 
 }

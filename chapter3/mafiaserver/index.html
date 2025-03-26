@@ -4,16 +4,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>500 - Erreur interne du serveur</title>
-        <script>
-            // Rediriger vers /Metasploit/index.php après 5 secondes
-            setTimeout(() => {
-                window.location.href = 'Metasploit/index.html';
-            }, 5000); // 5000 millisecondes = 5 secondes
+        <link rel="stylesheet" href="../../dialogues.css">
+        <script type="module">
+            import { loadDialogues } from '../../dialogues.js';
+            loadDialogues(() => window.location.href = 'Metasploit/index.html', 4, "../dialogues.json");
         </script>
     </head>
     <body>
         <h1>500 - Erreur interne du serveur</h1>
         <p>Le serveur est actuellement indisponible.</p>
-        <p>Redirection vers Metasploit/index.html dans 5 secondes...</p>
     </body>
 </html>
