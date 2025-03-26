@@ -1,0 +1,241 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #2c3e50;
+    margin: 0;
+    user-select: none;
+    overflow: hidden;
+}
+.phone {
+    width: 300px;
+    height: 600px;
+    background: #ecf0f1;
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    position: relative;
+    touch-action: none;
+}
+.screen {
+    width: 200%;
+    height: 100%;
+    display: flex;
+    transition: transform 0.3s ease-out;
+}
+.page {
+    width: 50%;
+    height: 100%;
+    flex-shrink: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 20px;
+    background: #bdc3c7;
+}
+.app {
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    text-align: center;
+}
+.app span {
+    font-size: 10px;
+    margin-top: 5px;
+}
+.navigation {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #7f8c8d;
+}
+.dot.active {
+    background: #2c3e50;
+}
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 400px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    text-align: center;
+    overflow-y: auto;
+}
+.close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+/* Écran des messages */
+.messages-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%; 
+    background: #fff;
+    display: none;
+    flex-direction: column;
+    z-index: 10;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+/* En-tête des messages */
+.header {
+    background: #007aff;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Liste des contacts */
+.contacts {
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+/* Style des contacts */
+.contact {
+    padding: 12px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    margin: 5px 10px;
+}
+
+.contact:hover {
+    background: #e0e0e0;
+}
+
+/* Écran du chat */
+.chat-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%; 
+    background: #f0f0f0;
+    display: none;
+    flex-direction: column;
+    z-index: 11;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+/* En-tête du chat */
+.chat-header {
+    background: #007aff;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Zone des messages */
+.messages {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Style des bulles de messages */
+.message {
+    max-width: 75%;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+/* Messages envoyés */
+.sent {
+    background: #007aff;
+    color: white;
+    align-self: flex-end;
+    border-radius: 10px 10px 0 10px;
+    padding: 8px 12px;
+}
+
+/* Messages reçus */
+.received {
+    background: #ecf0f1;
+    align-self: flex-start;
+    border-radius: 10px 10px 10px 0;
+    padding: 8px 12px;
+}
+
+/* Bouton retour en bas à gauche */
+.back {
+    cursor: pointer;
+    padding: 12px;
+    background: #e74c3c;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 0 0 20px 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back::before {
+    content: "←";
+    font-size: 20px;
+}
+
+
+.back-arrow {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: black;
+}
+.back-arrow:hover {
+    color: gray;
+}
