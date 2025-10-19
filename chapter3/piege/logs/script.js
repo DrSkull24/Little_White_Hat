@@ -26,7 +26,7 @@ const macDatabase = {
     "00:22:23:05:67:89": { lieu: "Pizzeria", latitude: "48.8643", longitude: "2.3201" }
 };
 
-function lookupMac() {
+window.lookupMac = function() {
     const inputMac = document.getElementById("mac-input").value.trim();
     const result = macDatabase[inputMac] || { lieu: "Localisation inconnue", latitude: "N/A", longitude: "N/A" };
 
@@ -36,21 +36,21 @@ function lookupMac() {
         `Coordonnées GPS : Latitude ${result.latitude}, Longitude ${result.longitude}`;
 }
 
-function openToolbox() {
+window.openToolbox = function() {
     document.getElementById("toolbox-popup").style.display = "block";
 }
 
-function closeToolbox() {
+window.closeToolbox = function() {
     document.getElementById("toolbox-popup").style.display = "none";
 }
 
-function openTool(tool) {
+window.openTool = function(tool) {
     closeToolbox(); 
     if (tool === "mac-lookup") {
         document.getElementById("mac-tool").style.display = "block";
     }
 }
 
-function closeTool() {
+window.closeTool = function() {
     document.getElementById("mac-tool").style.display = "none";
 }
